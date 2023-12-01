@@ -3,4 +3,7 @@ export const path = {
   login: "/login",
   signup: "/signup",
   dashboard: "/admin/dashboard",
+  profile: "/admin/profile",
+  mainCategory: "/admin/danh-muc-lon",
+  subCategory: "/admin/danh-muc-con",
 };

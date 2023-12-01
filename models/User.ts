@@ -1,11 +1,28 @@
-import mongoose, { Schema, models } from "mongoose";
+import { Model, Schema, models, model, ObjectId } from "mongoose";
 
 export enum userRole {
   admin = "admin",
   user = "user",
 }
 
-const UserSchema = new mongoose.Schema(
+export interface IUser {
+  name: string;
+  email: string;
+  role: userRole;
+  password: string;
+  description?: string;
+  books: [ObjectId];
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+  youtube?: string;
+  avatar?: {
+    public_id: string;
+    url: string;
+  };
+}
+
+const UserSchema: Schema<IUser> = new Schema(
   {
     name: {
       type: String,
@@ -58,19 +75,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
 
-    articles: {
+    books: {
       type: [Schema.Types.ObjectId],
-      ref: "Article",
-    },
-
-    galleries: {
-      type: [Schema.Types.ObjectId],
-      ref: "Gallery",
+      ref: "Book",
     },
   },
   { timestamps: true }
 );
 
-const User = models.User || mongoose.model("User", UserSchema);
+const User: Model<IUser> = models.User || model("User", UserSchema);
 
 export default User;

@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Arsenal } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/providers/auth-provider";
 import { Toaster } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"] });
+const arsenal = Arsenal({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-arsenal",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,8 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
-      <Toaster position="bottom-center" reverseOrder={false} />
+      <body className={`${arsenal.className} ${arsenal.variable}`}>
+        <AuthProvider>{children}</AuthProvider>
+        <Toaster position="bottom-center" reverseOrder={false} />
+      </body>
     </html>
   );
 }
