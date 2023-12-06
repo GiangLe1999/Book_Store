@@ -30,6 +30,7 @@ import { getAllSubCategories } from "@/service/sub-categories.service";
 import TextEditor from "../text-editor";
 import FormOptimizedCreatableInput from "../optimized-creatable-input";
 import { BookEntity } from "@/entities/book.entity";
+import { EditBookInput } from "@/dtos/book/edit-book.dto";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên sách"),
@@ -110,7 +111,7 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
 
       const { name, description, slug, downloadLink } = formData;
 
-      const bodyRequest: CreateBookInput = {
+      const bodyRequest: EditBookInput = {
         name,
         description,
         slug,
@@ -121,9 +122,10 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
         subCategoryId: selectedSubCategory.value,
         authorId: authorId as string,
         tags: tags?.map((tag) => tag.value) || [],
+        bookId: book?._id.toString() || "",
       };
 
-      const { data }: { data: CoreOutput } = await axiosInstance.post(
+      const { data }: { data: CoreOutput } = await axiosInstance.put(
         "/api/admin/book",
         bodyRequest
       );
@@ -135,7 +137,7 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
 
       if (data.ok) {
         setIsLoading(false);
-        toast.success(`Tạo sách thành công`);
+        toast.success(`Cập nhật sách thành công`);
         router.back();
       }
     } catch (error: any) {
@@ -292,7 +294,7 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
           <TextEditor content={content} setContent={setContent} />
 
           <BtnWithLoading
-            content="Tạo sách"
+            content="Cập nhật sách"
             isLoading={isLoading}
             type="submit"
             customClasses="!absolute bottom-7 right-5"

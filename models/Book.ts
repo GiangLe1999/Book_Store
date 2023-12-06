@@ -13,7 +13,7 @@ export interface IBook {
   author: ObjectId;
   views: number;
   ratings: number;
-  tags: [];
+  tags: string[];
 }
 
 const bookSchema: Schema<IBook> = new Schema(

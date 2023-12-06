@@ -14,7 +14,7 @@ export interface IDatabaseImage {
 }
 
 export const editCloudinaryImage = async (
-  newImageUrl: string | IDatabaseImage,
+  newImageUrl?: string | IDatabaseImage,
   oldImage?: IDatabaseImage
 ) => {
   if (newImageUrl && !(newImageUrl as string).startsWith("https")) {
@@ -32,7 +32,7 @@ export const editCloudinaryImage = async (
     return newImage;
   }
 
-  if ((newImageUrl && (newImageUrl as string)).startsWith("https")) {
+  if ((newImageUrl && (newImageUrl as string))?.startsWith("https")) {
     return;
   }
 };

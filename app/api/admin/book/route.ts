@@ -6,6 +6,7 @@ import { CreateBookInput } from "@/dtos/book/create-book.dto";
 import Book from "@/models/Book";
 import MainCategory from "@/models/MainCategory";
 import SubCategory from "@/models/SubCategory";
+import { EditBookInput } from "@/dtos/book/edit-book.dto";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
@@ -96,6 +97,144 @@ export async function POST(req: Request) {
         ok: true,
       },
       { status: 201 }
+    );
+  } catch (error: any) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: error.message,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const body: EditBookInput = await req.json();
+
+    const {
+      name,
+      slug,
+      description,
+      downloadLink,
+      cover,
+      mainCategoryId,
+      subCategoryId,
+      content,
+      tags,
+      bookId,
+    } = body;
+
+    if (!bookId || !name || !slug || !description || !content) {
+      return NextResponse.json({
+        ok: false,
+        error: "Thiếu tham số cần thiết",
+      });
+    }
+
+    await dbConnect();
+
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy sách phù hợp!",
+      });
+    }
+
+    // Main Category
+    const mainCategory: any = await MainCategory.findById(
+      book?.mainCategory?.toString()
+    ).select("books");
+
+    if (mainCategory) {
+      const bookIndex = mainCategory.books.findIndex((r: any) => {
+        return r.toString() === bookId;
+      });
+
+      mainCategory.books.splice(bookIndex, 1);
+      mainCategory.save();
+    }
+
+    if (mainCategoryId) {
+      const newMainCategory = await MainCategory.findById(
+        mainCategoryId
+      ).select("books");
+      if (!newMainCategory) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy danh mục lớn",
+        });
+      } else {
+        newMainCategory?.books?.push(mainCategoryId as any);
+        newMainCategory.save();
+      }
+    }
+
+    // Sub Category
+    const subCategory: any = await SubCategory.findById(
+      book?.subCategory?.toString()
+    ).select("books");
+
+    if (subCategory) {
+      const bookIndex = subCategory.books.findIndex((r: any) => {
+        return r.toString() === bookId;
+      });
+
+      subCategory.books.splice(bookIndex, 1);
+      subCategory.save();
+    }
+
+    if (subCategoryId) {
+      const newSubCategory = await SubCategory.findById(subCategoryId).select(
+        "books"
+      );
+      if (!newSubCategory) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy danh mục con",
+        });
+      } else {
+        newSubCategory?.books?.push(subCategoryId as any);
+        newSubCategory.save();
+      }
+    }
+
+    const newCover = await editCloudinaryImage(cover, book.cover);
+    if (newCover) {
+      book.cover = {
+        public_id: newCover.public_id,
+        url: newCover.secure_url,
+      };
+    }
+
+    book.name = name;
+    book.slug = slug;
+    book.downloadLink = downloadLink;
+    book.description = description;
+    book.content = content;
+
+    if (tags) {
+      book.tags = tags;
+    }
+
+    if (mainCategoryId) {
+      book.mainCategory = mainCategoryId as any;
+    }
+
+    if (subCategoryId) {
+      book.subCategory = subCategoryId as any;
+    }
+
+    await book.save();
+
+    return NextResponse.json(
+      {
+        ok: true,
+      },
+      { status: 200 }
     );
   } catch (error: any) {
     return NextResponse.json(
