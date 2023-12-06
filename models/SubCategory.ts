@@ -4,6 +4,7 @@ export interface ISubCategory {
   name: string;
   description: string;
   slug: string;
+  mainCategory?: ObjectId;
   books?: [ObjectId];
 }
 
@@ -22,6 +23,11 @@ const subCategorySchema: Schema<ISubCategory> = new Schema(
     slug: {
       type: String,
       required: true,
+    },
+
+    mainCategory: {
+      type: Schema.Types.ObjectId,
+      ref: "MainCategory",
     },
 
     books: {

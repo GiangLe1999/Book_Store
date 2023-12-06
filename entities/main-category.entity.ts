@@ -5,7 +5,8 @@ import { SubCategoryEntity } from "./sub-category.entity";
 
 export interface MainCategoryEntity
   extends CoreEntity,
-    Omit<IMainCategory, "subCategories" | "books"> {
+    Omit<IMainCategory, "subCategories" | "books" | "mainCategory"> {
+  mainCategory: MainCategoryEntity[];
   subCategories: SubCategoryEntity[];
   books: BookEntity[];
 }

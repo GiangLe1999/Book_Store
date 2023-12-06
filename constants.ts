@@ -4,6 +4,9 @@ export const path = {
   signup: "/signup",
   dashboard: "/admin/dashboard",
   profile: "/admin/profile",
-  mainCategory: "/admin/danh-muc-lon",
-  subCategory: "/admin/danh-muc-con",
+  adminMainCategories: "/admin/danh-muc-lon",
+  adminSubCategories: "/admin/danh-muc-con",
+  adminBooks: "/admin/sach",
+  createBook: "/admin/sach/tao-moi",
+  editBook: "/admin/sach/cap-nhat",
 };

@@ -1,9 +1,12 @@
+import { IDatabaseImage } from "@/dtos/common.dto";
 import { Model, Schema, models, model, ObjectId } from "mongoose";
 
 export interface IBook {
   name: string;
   description: string;
   slug: string;
+  downloadLink: string;
+  cover: IDatabaseImage;
   subCategory?: ObjectId;
   mainCategory?: ObjectId;
   content: string;
@@ -30,6 +33,15 @@ const bookSchema: Schema<IBook> = new Schema(
       required: true,
     },
 
+    downloadLink: {
+      type: String,
+      required: true,
+    },
+
+    cover: {
+      type: { public_id: String, url: String },
+    },
+
     mainCategory: {
       type: Schema.Types.ObjectId,
       ref: "MainCategory",
@@ -53,10 +65,12 @@ const bookSchema: Schema<IBook> = new Schema(
 
     views: {
       type: Number,
+      default: 0,
     },
 
     ratings: {
       type: Number,
+      default: 0,
     },
 
     tags: {

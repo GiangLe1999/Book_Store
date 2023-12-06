@@ -39,7 +39,7 @@ const AdminSidebar: FC<Props> = (): JSX.Element => {
         />
         <ProfileAccordion isExpand={isExpand} />
 
-        <div className="">
+        <div>
           {adminSidebarItems.map((item) => (
             <Link
               href={item.link}

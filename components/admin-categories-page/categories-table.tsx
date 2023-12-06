@@ -14,7 +14,7 @@ import { getAllSubCategories } from "@/service/sub-categories.service";
 import { MainCategoryEntity } from "@/entities/main-category.entity";
 import { SubCategoryEntity } from "@/entities/sub-category.entity";
 import BtnWithIcon from "../btn-with-icon";
-import CustomModal from "../custom-model";
+import CustomModal from "../custom-modal";
 
 interface Props {
   isMainCategories?: boolean;
@@ -42,8 +42,13 @@ const CategoriesTable: FC<Props> = ({
   const fetchCategories = async () => {
     setIsLoading(true);
     const fetchedCategories = isMainCategories
-      ? await getAllMainCategories("name slug books")
-      : await getAllSubCategories("name slug books");
+      ? await getAllMainCategories("name slug description books")
+      : await getAllSubCategories(
+          "name slug description books",
+          "",
+          true,
+          "name _id"
+        );
 
     if (isMainCategories) {
       setCategories(fetchedCategories as MainCategoryEntity[]);
@@ -66,6 +71,7 @@ const CategoriesTable: FC<Props> = ({
             icon={BiPlusCircle}
             iconSize={18}
             onClick={() => setShowCreateForm(true)}
+            iconCustomClasses="mt-[2px]"
           />
         </div>
 
@@ -91,11 +97,11 @@ const CategoriesTable: FC<Props> = ({
             </>
           ) : (
             <tbody>
-              {categories.map((category) => (
+              {categories?.map((category) => (
                 <tr key={category._id.toString()}>
-                  <td className="text-center">{category.name}</td>
-                  <td className="text-center">{category.slug}</td>
-                  <td className="text-center">{category.books.length}</td>
+                  <td className="text-center">{category?.name}</td>
+                  <td className="text-center">{category?.slug}</td>
+                  <td className="text-center">{category?.books.length}</td>
                   <td className="flex items-center justify-center gap-4">
                     <MdEditSquare
                       className="mt-1 cursor-pointer text-blue-900"

@@ -13,3 +13,13 @@ export interface IDatabaseImage {
   public_id: string;
   url: string;
 }
+
+export interface ISelectOption {
+  value: string;
+  label: string;
+}
+
+export interface IReadOnlySelectOption {
+  readonly value: string;
+  readonly label: string;
+}

@@ -1,5 +1,6 @@
 import { path } from "@/constants";
 import { IconType } from "react-icons";
+import { GiWhiteBook } from "react-icons/gi";
 import { IoMdListBox } from "react-icons/io";
 import {
   MdAccountCircle,
@@ -16,6 +17,7 @@ export const adminSidebarItems: {
   { link: "/", title: "Đến Blog", icon: MdHome },
   { link: path.dashboard, title: "Dashboard", icon: MdDashboard },
   { link: path.profile, title: "Profile", icon: MdAccountCircle },
-  { link: path.mainCategory, title: "Danh Mục Lớn", icon: MdCategory },
-  { link: path.subCategory, title: "Danh Mục Con", icon: IoMdListBox },
+  { link: path.adminMainCategories, title: "Danh Mục Lớn", icon: MdCategory },
+  { link: path.adminSubCategories, title: "Danh Mục Con", icon: IoMdListBox },
+  { link: path.adminBooks, title: "Sách", icon: GiWhiteBook },
 ];

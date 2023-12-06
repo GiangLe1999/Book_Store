@@ -9,7 +9,10 @@ import toast from "react-hot-toast";
 import { CreateAccountOutput } from "@/dtos/auth/create-account.dto";
 import { MainCategoryEntity } from "@/entities/main-category.entity";
 import { SubCategoryEntity } from "@/entities/sub-category.entity";
-import { CreateCategoryInput } from "@/dtos/main-category/create-category.dto";
+import { CreateMainCategoryInput } from "@/dtos/main-category/create-main-category.dto";
+import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
+import { getAllMainCategories } from "@/service/main-categories.service";
+import { CreateSubCategoryInput } from "@/dtos/sub-category/create-sub-category.dto";
 
 interface Props {
   setShowEditForm: Dispatch<SetStateAction<boolean>>;
@@ -42,7 +45,14 @@ const EditCategoryForm: FC<Props> = ({
   isMainCategory,
   isSubCategory,
 }): JSX.Element => {
+  const [categories, setCategories] = useState<ISelectOption[]>();
+  const [selectedCategory, setSelectedCategory] = useState<ISelectOption>({
+    value: "",
+    label: "",
+  });
+
   const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<FormValues>({
     defaultValues: {
       name: "",
@@ -59,13 +69,21 @@ const EditCategoryForm: FC<Props> = ({
     try {
       setIsLoading(true);
 
-      const requestBody: CreateCategoryInput = formData;
+      let bodyRequest;
+      if (isMainCategory) {
+        bodyRequest = formData as CreateMainCategoryInput;
+      } else {
+        bodyRequest = {
+          ...formData,
+          mainCategory: selectedCategory.value,
+        } as CreateSubCategoryInput;
+      }
 
       const { data }: { data: CreateAccountOutput } = await axiosInstance.put(
         `/api/admin/${isMainCategory ? "main" : "sub"}-category?id=${
           editedCategory?._id
         }`,
-        requestBody
+        bodyRequest
       );
 
       if (data.error) {
@@ -89,7 +107,29 @@ const EditCategoryForm: FC<Props> = ({
     setValue("name", editedCategory?.name || "");
     setValue("slug", editedCategory?.slug || "");
     setValue("description", editedCategory?.description || "");
+    if (isSubCategory) {
+      setSelectedCategory({
+        value: (editedCategory as SubCategoryEntity)?.mainCategory?._id || "",
+        label: (editedCategory as SubCategoryEntity)?.mainCategory?.name || "",
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    if (isSubCategory) {
+      getAllMainCategories("name")
+        .then((data) => {
+          const formattedCategories = data?.map((category) => ({
+            label: category.name,
+            value: category._id,
+          }));
+
+          setCategories(formattedCategories);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="admin-card-body">
       <FormInput
@@ -114,6 +154,18 @@ const EditCategoryForm: FC<Props> = ({
             : "Eg: lop-1, lop-2, toan-hoc ..."
         }
       />
+
+      {isSubCategory && (
+        <FormOptimizedSelect
+          id="category"
+          label="Chọn danh mục cha"
+          onChange={
+            setSelectedCategory as Dispatch<SetStateAction<ISelectOption>>
+          }
+          options={categories as ISelectOption[]}
+          value={selectedCategory}
+        />
+      )}
 
       <FormInput
         id="description"

@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +7,11 @@ import FormInput from "../form-input";
 import axiosInstance from "@/lib/axios";
 import toast from "react-hot-toast";
 import { CreateAccountOutput } from "@/dtos/auth/create-account.dto";
-import { CreateCategoryInput } from "@/dtos/main-category/create-category.dto";
+import { CreateMainCategoryInput } from "@/dtos/main-category/create-main-category.dto";
+import { ISelectOption } from "@/dtos/common.dto";
+import { CreateSubCategoryInput } from "@/dtos/sub-category/create-sub-category.dto";
+import FormOptimizedSelect from "../form-optimized-select";
+import { getAllMainCategories } from "@/service/main-categories.service";
 
 interface Props {
   setShowCreateForm: Dispatch<SetStateAction<boolean>>;
@@ -35,6 +39,12 @@ const CreateCategoryForm: FC<Props> = ({
   isSubCategory,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
+  const [categories, setCategories] = useState<ISelectOption[]>();
+  const [selectedCategory, setSelectedCategory] = useState<ISelectOption>({
+    value: "",
+    label: "",
+  });
+
   const form = useForm<FormValues>({
     defaultValues: {
       name: "",
@@ -52,13 +62,19 @@ const CreateCategoryForm: FC<Props> = ({
     try {
       setIsLoading(true);
 
-      const requestBody: CreateCategoryInput = { ...formData };
-
+      let bodyRequest;
       if (isMainCategory) {
+        bodyRequest = formData as CreateMainCategoryInput;
+      } else {
+        bodyRequest = {
+          ...formData,
+          mainCategory: selectedCategory.value,
+        } as CreateSubCategoryInput;
       }
+
       const { data }: { data: CreateAccountOutput } = await axiosInstance.post(
         `/api/admin/${isMainCategory ? "main" : "sub"}-category`,
-        requestBody
+        bodyRequest
       );
 
       if (data.error) {
@@ -77,6 +93,22 @@ const CreateCategoryForm: FC<Props> = ({
       toast.error(error.message);
     }
   };
+
+  useEffect(() => {
+    if (isSubCategory) {
+      getAllMainCategories("name")
+        .then((data) => {
+          const formattedCategories = data?.map((category) => ({
+            label: category.name,
+            value: category._id,
+          }));
+
+          setCategories(formattedCategories);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="admin-card-body">
       <FormInput
@@ -101,6 +133,18 @@ const CreateCategoryForm: FC<Props> = ({
             : "Eg: lop-1, lop-2, toan-hoc ..."
         }
       />
+
+      {isSubCategory && (
+        <FormOptimizedSelect
+          id="category"
+          label="Chọn danh mục cha"
+          onChange={
+            setSelectedCategory as Dispatch<SetStateAction<ISelectOption>>
+          }
+          options={categories as ISelectOption[]}
+          value={selectedCategory}
+        />
+      )}
 
       <FormInput
         id="description"

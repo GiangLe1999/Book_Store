@@ -3,12 +3,14 @@ import axiosInstance from "@/lib/axios";
 
 export const getAllSubCategories = async (
   specifiedProps: string = "",
-  limit: string = ""
+  limit: string = "",
+  willPopulate: boolean = false,
+  populatedProps: string = ""
 ) => {
   try {
     const { data }: { data: GetAllSubCategoriesOutput } = await axiosInstance(
       "/api/public/sub-categories",
-      { params: { specifiedProps, limit } }
+      { params: { specifiedProps, limit, willPopulate, populatedProps } }
     );
 
     return data.subCategories;

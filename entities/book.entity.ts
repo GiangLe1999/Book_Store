@@ -7,7 +7,7 @@ import { UserEntity } from "./user.entity";
 export interface BookEntity
   extends CoreEntity,
     Omit<IBook, "subCategory" | "mainCategory" | "author"> {
-  subCategory: SubCategoryEntity[];
-  mainCategory: MainCategoryEntity[];
+  subCategory: SubCategoryEntity;
+  mainCategory: MainCategoryEntity;
   author: UserEntity;
 }

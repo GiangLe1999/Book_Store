@@ -5,7 +5,7 @@ import { MdCategory } from "react-icons/md";
 
 interface Props {}
 
-const AdminCategoriesPage: NextPage<Props> = async () => {
+const Page: NextPage<Props> = async () => {
   return (
     <div className="admin-page-container">
       <div className="admin-card">
@@ -21,4 +21,4 @@ const AdminCategoriesPage: NextPage<Props> = async () => {
   );
 };
 
-export default AdminCategoriesPage;
+export default Page;
