@@ -80,6 +80,8 @@ const bookSchema: Schema<IBook> = new Schema(
   { timestamps: true }
 );
 
+bookSchema.index({ name: "text" });
+
 const Book: Model<IBook> = models.Book || model("Book", bookSchema);
 
 export default Book;

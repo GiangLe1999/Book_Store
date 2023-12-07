@@ -6,6 +6,7 @@ import {
   MdAccountCircle,
   MdCategory,
   MdDashboard,
+  MdEditSquare,
   MdHome,
 } from "react-icons/md";
 
@@ -20,4 +21,5 @@ export const adminSidebarItems: {
   { link: path.adminMainCategories, title: "Danh Mục Lớn", icon: MdCategory },
   { link: path.adminSubCategories, title: "Danh Mục Con", icon: IoMdListBox },
   { link: path.adminBooks, title: "Sách", icon: GiWhiteBook },
+  { link: path.adminArticles, title: "Bài viết", icon: MdEditSquare },
 ];

@@ -20,6 +20,7 @@ export interface IUser {
     public_id: string;
     url: string;
   };
+  articles: [ObjectId];
 }
 
 const UserSchema: Schema<IUser> = new Schema(
@@ -78,6 +79,11 @@ const UserSchema: Schema<IUser> = new Schema(
     books: {
       type: [Schema.Types.ObjectId],
       ref: "Book",
+    },
+
+    articles: {
+      type: [Schema.Types.ObjectId],
+      ref: "Article",
     },
   },
   { timestamps: true }

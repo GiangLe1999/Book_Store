@@ -9,4 +9,10 @@ export const path = {
   adminBooks: "/admin/sach",
   createBook: "/admin/sach/tao-moi",
   editBook: "/admin/sach/cap-nhat",
+  adminArticles: "/admin/bai-viet",
+  createArticle: "/admin/bai-viet/tao-moi",
+  editArticle: "/admin/bai-viet/cap-nhat",
+
+  // Frontend
+  article: "/bai-viet/",
 };
