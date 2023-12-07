@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
           );
           if (!passwordMatch) return null;
 
-          return existedUser;
+          return existedUser as any;
         } catch (error: any) {
           console.log(error);
           return null;
@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           email: user.email,
           role: user.role,
-          image: user.avatar.url || "",
+          image: user?.avatar?.url || "",
         } as any;
 
       return session;
