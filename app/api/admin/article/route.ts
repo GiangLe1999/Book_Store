@@ -43,6 +43,7 @@ export async function POST(req: Request) {
     });
 
     const user = await User.findById(authorId).select("articles");
+
     if (user && user.articles) {
       user.articles.push(article._id);
       await user.save();

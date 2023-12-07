@@ -13,6 +13,7 @@ import moment from "moment";
 import Link from "next/link";
 import { getAllArticlesForAdmin } from "@/service/articles.service";
 import { path } from "@/constants";
+import DeleteArticleForm from "./delete-article-form";
 
 interface Props {}
 
@@ -110,7 +111,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
         </table>
       </div>
 
-      {/* <CustomModal
+      <CustomModal
         heading="Cảnh báo"
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
@@ -120,7 +121,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
           refetch={fetchArticles}
           deletedArticle={deletedArticle as ArticleEntity}
         />
-      </CustomModal> */}
+      </CustomModal>
     </>
   );
 };
