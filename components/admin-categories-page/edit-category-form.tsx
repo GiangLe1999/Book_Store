@@ -10,9 +10,10 @@ import { CreateAccountOutput } from "@/dtos/auth/create-account.dto";
 import { MainCategoryEntity } from "@/entities/main-category.entity";
 import { SubCategoryEntity } from "@/entities/sub-category.entity";
 import { CreateMainCategoryInput } from "@/dtos/main-category/create-main-category.dto";
-import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
+import FormOptimizedSelect from "../form-optimized-select";
 import { getAllMainCategories } from "@/service/main-categories.service";
 import { CreateSubCategoryInput } from "@/dtos/sub-category/create-sub-category.dto";
+import { ISelectOption } from "@/dtos/common.dto";
 
 interface Props {
   setShowEditForm: Dispatch<SetStateAction<boolean>>;
