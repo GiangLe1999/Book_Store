@@ -13,6 +13,7 @@ import moment from "moment";
 import CustomModal from "../custom-modal";
 import { getAllBooksForAdmin } from "@/service/books.service";
 import { BookEntity } from "@/entities/book.entity";
+import DeleteBookForm from "./delete-book-form";
 
 interface Props {}
 
@@ -110,7 +111,7 @@ const BooksTable: FC<Props> = (): JSX.Element => {
         </table>
       </div>
 
-      {/* <CustomModal
+      <CustomModal
         heading="Cảnh báo"
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
@@ -120,7 +121,7 @@ const BooksTable: FC<Props> = (): JSX.Element => {
           refetch={fetchBooks}
           deletedBook={deletedBook as BookEntity}
         />
-      </CustomModal> */}
+      </CustomModal>
     </>
   );
 };

@@ -8,6 +8,7 @@ import MainCategory from "@/models/MainCategory";
 import SubCategory from "@/models/SubCategory";
 import { EditBookInput } from "@/dtos/book/edit-book.dto";
 export const dynamic = "force-dynamic";
+import cloudinary from "cloudinary";
 
 export async function POST(req: Request) {
   try {
@@ -244,5 +245,91 @@ export async function PUT(req: Request) {
       },
       { status: 500 }
     );
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({
+        ok: false,
+        error: "Thiếu tham số id của sách",
+      });
+    }
+
+    await dbConnect();
+
+    const book = await Book.findById(id);
+
+    if (!book) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy sách cần xóa",
+      });
+    }
+
+    if (book.cover.public_id) {
+      await cloudinary.v2.uploader.destroy(book.cover.public_id);
+    }
+
+    // Main Category
+    if (book.mainCategory) {
+      const mainCategory: any = await MainCategory.findById(
+        book.mainCategory.toString()
+      ).select("books");
+
+      if (mainCategory) {
+        const bookIndex = mainCategory.books.findIndex((r: any) => {
+          return r.toString() === id;
+        });
+
+        mainCategory.books.splice(bookIndex, 1);
+        mainCategory.save();
+      }
+    }
+
+    // Sub Category
+    if (book.subCategory) {
+      const subCategory: any = await SubCategory.findById(
+        book.subCategory.toString()
+      ).select("books");
+
+      if (subCategory) {
+        const bookIndex = subCategory.books.findIndex((r: any) => {
+          return r.toString() === id;
+        });
+
+        subCategory.books.splice(bookIndex, 1);
+        subCategory.save();
+      }
+    }
+
+    // User
+    const user: any = await User.findById(book.author.toString()).select(
+      "books"
+    );
+
+    if (user) {
+      const bookIndex = user.books.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      user.books.splice(bookIndex, 1);
+      user.save();
+    }
+
+    await Book.deleteOne({ _id: id });
+
+    return NextResponse.json({
+      ok: true,
+    });
+  } catch (error: any) {
+    return NextResponse.json({
+      ok: false,
+      error: error.message,
+    });
   }
 }
