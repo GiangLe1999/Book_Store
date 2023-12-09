@@ -14,5 +14,9 @@ export const path = {
   editArticle: "/admin/bai-viet/cap-nhat",
 
   // Frontend
+  category: "/danh-muc/",
+  book: "/sach/",
   article: "/bai-viet/",
 };
+
+export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";

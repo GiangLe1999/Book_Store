@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Arsenal } from "next/font/google";
+import { Arsenal, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/providers/auth-provider";
 import { Toaster } from "react-hot-toast";
@@ -8,6 +8,12 @@ const arsenal = Arsenal({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-arsenal",
+});
+
+const garamond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-garamond",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${arsenal.className} ${arsenal.variable}`}>
+      <body className={`${arsenal.className} ${garamond.variable}`}>
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
       </body>

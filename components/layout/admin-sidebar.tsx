@@ -33,6 +33,7 @@ const AdminSidebar: FC<Props> = (): JSX.Element => {
       ></div>
       <div className="relative z-[4]">
         <Logo
+          textWhite
           wrapperClasses={`h-10 mx-auto my-6 ${
             isExpand ? "w-[200px]" : "w-[60px]"
           }`}

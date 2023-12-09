@@ -29,6 +29,10 @@
 }
 
 /* Admin Common */
+.main-gradient {
+  @apply bg-[linear-gradient(135deg,#034166_0%,#006693_100%)];
+}
+
 .admin-main-gradient {
   @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
 }
@@ -47,22 +51,34 @@
 }
 
 /* Button */
-.primary-btn {
+.primary-btn,
+.secondary-btn {
   transition: background-image 0.5s ease-in;
   @apply relative py-3 px-4 rounded admin-main-gradient text-white font-bold;
 }
 
-.primary-btn:hover::before {
+.secondary-btn {
+  @apply main-gradient;
+}
+
+.primary-btn:hover::before,
+.secondary-btn:hover::before {
   opacity: 1;
 }
 
-.primary-btn span {
+.primary-btn span,
+.secondary-btn span {
   @apply relative z-[3];
 }
 
-.primary-btn::before {
+.primary-btn::before,
+.secondary-btn::before {
   background-image: linear-gradient(315deg, #c3224a, #4a0d37);
   @apply absolute content-[''] w-full h-full transition-opacity duration-500 ease-[ease-out] z-[2] opacity-0 left-0 top-0 rounded-[5px];
+}
+
+.secondary-btn::before {
+  background-image: linear-gradient(315deg, #034166, #006693);
 }
 
 /* Form */
@@ -180,4 +196,9 @@ figure img {
 
 figure.image figcaption {
   @apply text-[#5b7c98] !mt-0 text-sm text-center p-3 px-[10px] bg-[#f8f7f7] rounded-b-md;
+}
+
+/* Home page */
+.home-section-bg {
+  @apply bg-[linear-gradient(_180deg,rgba(0,102,147,1)_0%,rgba(0,102,147,1)_60%,rgba(168,203,218,1)_86%,rgba(255,255,255,1)_100%_)];
 }

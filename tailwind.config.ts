@@ -8,9 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        garamond: ["var(--font-garamond)"],
+      },
       colors: {
         primary: "#006693",
         secondary: "#034166",
+        dark_blue: "#0a2240",
+        light_text: "#6d6e71",
         black_text: "#353535",
         light_gray: "#f5f4f2",
         bold_gray: "#e8e7e5",

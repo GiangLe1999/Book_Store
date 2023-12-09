@@ -14,6 +14,7 @@ interface Props {
   to?: string;
   external?: boolean;
   iconCustomClasses?: string;
+  isFrontpage?: boolean;
 }
 
 const BtnWithIcon: FC<Props> = ({
@@ -28,6 +29,7 @@ const BtnWithIcon: FC<Props> = ({
   to,
   external,
   iconCustomClasses,
+  isFrontpage,
 }): JSX.Element => {
   let Component = "button" as any;
   if (!onClick && href) {
@@ -47,7 +49,9 @@ const BtnWithIcon: FC<Props> = ({
     <Component
       href={href || to}
       onClick={onClick}
-      className={`primary-btn ${customClasses}`}
+      className={`${
+        isFrontpage ? "secondary-btn" : "primary-btn"
+      } ${customClasses}`}
       type={type}
       {...externalLinkAttr}
     >
