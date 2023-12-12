@@ -15,8 +15,14 @@ export const path = {
 
   // Frontend
   category: "/danh-muc/",
+  allCategories: "/danh-muc/tat-ca",
   book: "/sach/",
+  allBooks: "/sach/tat-ca",
   article: "/bai-viet/",
+  allArticles: "/bai-viet/tat-ca",
+  copyrights: "/ban-quyen-noi-dung",
+  procedure: "/quy-dinh-su-dung",
+  privacy: "/chinh-sach-bao-mat",
 };
 
 export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";

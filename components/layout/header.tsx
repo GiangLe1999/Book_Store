@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from "../logo";
+import Socials from "./socials";
 
 interface Props {}
 
@@ -53,18 +54,7 @@ const Header: FC<Props> = (props): JSX.Element => {
           </ul>
 
           <div className="flex items-center gap-6">
-            <ul className="flex items-center gap-3">
-              {socialItems.map((socialItem, index) => (
-                <a
-                  key={index}
-                  href={socialItem.link}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {socialItem.icon({ size: 12 })}
-                </a>
-              ))}
-            </ul>
+            <Socials />
 
             <span className="capitalize">
               {moment(Date.now()).format("dddd - DD/MM/YYYY")}

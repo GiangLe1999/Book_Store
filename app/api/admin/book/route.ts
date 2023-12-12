@@ -187,8 +187,10 @@ export async function PUT(req: Request) {
         return r.toString() === bookId;
       });
 
-      subCategory.books.splice(bookIndex, 1);
-      subCategory.save();
+      if (bookIndex !== -1) {
+        subCategory.books.splice(bookIndex, 1);
+        subCategory.save();
+      }
     }
 
     if (subCategoryId) {

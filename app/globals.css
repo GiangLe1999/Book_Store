@@ -199,10 +199,43 @@ figure.image figcaption {
 }
 
 /* Home page */
-.home-section-bg {
-  @apply bg-[linear-gradient(_180deg,rgba(0,102,147,1)_0%,rgba(0,102,147,1)_60%,rgba(168,203,218,1)_86%,rgb(182_241_255)_100%_)];
-}
-
 .three-books-shadow {
   @apply shadow-[1px_1px_5px_#333] hover:shadow-[5px_5px_35px_#000];
+}
+
+/* Footer */
+.footer-title {
+  @apply font-bold uppercase text-white mb-[18px] text-lg;
+}
+
+.footer-item {
+  @apply text-[#dbdbdb] text-sm my-[10px] leading-5 transition;
+}
+
+.footer-icon {
+  @apply relative w-7 h-7 rounded-full overflow-hidden;
+}
+
+.form-input-wrapper {
+  @apply flex flex-col gap-1;
+}
+
+.form-input-label {
+  @apply text-primary text-[13px];
+}
+
+.form-input {
+  @apply px-4 py-2 rounded-sm border outline-none text-sm;
+}
+
+.footer-accordion-list {
+  @apply space-y-3;
+}
+
+.footer-accordion-list li {
+  @apply list-disc ml-3 transition;
+}
+
+.footer-accordion-list li:hover {
+  @apply text-white;
 }

@@ -74,7 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-section-bg mt-[45px]">
+      <section className="main-gradient mt-[45px]">
         <div className="flex items-center gap-8 container py-14">
           <div className="text-white w-[40%]">
             <h3 className="text-3xl leading-relaxed font-garamond">

@@ -18,7 +18,7 @@ export async function GET(req: Request) {
       .populate({
         path: "books",
         model: Book,
-        select: "name slug cover",
+        select: "name slug cover createdAt",
         options: { sort: { createAt: -1 } },
       })
       .sort({ createdAt: 1 });

@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { FC, ReactNode } from "react";
 
@@ -10,6 +11,7 @@ const layout: FC<Props> = ({ children }): JSX.Element => {
     <>
       <Header />
       <main className="mt-[130px]">{children}</main>
+      <Footer />
     </>
   );
 };
