@@ -252,6 +252,20 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
                 placeholder="Nhập link download sách"
               />
 
+              <FormInput
+                id="realAuthor"
+                label="Tác giả"
+                register={register("realAuthor")}
+                placeholder="Nhập tên tác giả"
+              />
+
+              <FormInput
+                id="realAuthor"
+                label="Nhà xuất bản"
+                register={register("publisher")}
+                placeholder="Nhà tên nhà xuất bản"
+              />
+
               <FormOptimizedSelect
                 id="country"
                 label="Chọn danh mục lớn"
