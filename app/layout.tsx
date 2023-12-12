@@ -3,6 +3,7 @@ import { Arsenal, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/providers/auth-provider";
 import { Toaster } from "react-hot-toast";
+import StyledProgressBar from "@/components/progress-bar";
 
 const arsenal = Arsenal({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const arsenal = Arsenal({
 
 const garamond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-garamond",
 });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${arsenal.className} ${garamond.variable}`}>
+        <StyledProgressBar />
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
       </body>

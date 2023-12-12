@@ -181,9 +181,9 @@ export const socialItems = [
 export const homeMainChoices = [
   {
     icon: "sach-danh-muc-lop-hoc.svg",
-    title: "Sách từ Lớp 1 - Lớp 12",
-    desc: "Trọn Bộ PDF Sách Giáo Khoa Lớp 1 - Lớp 12. Thầy cô, phụ huynh, học sinh có thể đọc online hoặc download hoàn toàn miễn phí.",
-    slug: "lop-hoc",
+    title: "Sách ôn thi Đại học",
+    desc: "Tăng level nhanh chóng với hàng trăm bộ sách ôn luyện thi THPT quốc gia 2024 cho học sinh 2K5, có thể đọc online hoặc download miễn phí PDF.",
+    slug: "on-thi-dai-hoc",
   },
   {
     icon: "danh-muc-sach-tieng-anh.png",

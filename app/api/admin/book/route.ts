@@ -163,13 +163,14 @@ export async function PUT(req: Request) {
       const newMainCategory = await MainCategory.findById(
         mainCategoryId
       ).select("books");
+
       if (!newMainCategory) {
         return NextResponse.json({
           ok: false,
           error: "Không tìm thấy danh mục lớn",
         });
       } else {
-        newMainCategory?.books?.push(mainCategoryId as any);
+        newMainCategory?.books?.push(bookId as any);
         newMainCategory.save();
       }
     }
@@ -198,7 +199,7 @@ export async function PUT(req: Request) {
           error: "Không tìm thấy danh mục con",
         });
       } else {
-        newSubCategory?.books?.push(subCategoryId as any);
+        newSubCategory?.books?.push(bookId as any);
         newSubCategory.save();
       }
     }

@@ -200,5 +200,9 @@ figure.image figcaption {
 
 /* Home page */
 .home-section-bg {
-  @apply bg-[linear-gradient(_180deg,rgba(0,102,147,1)_0%,rgba(0,102,147,1)_60%,rgba(168,203,218,1)_86%,rgba(255,255,255,1)_100%_)];
+  @apply bg-[linear-gradient(_180deg,rgba(0,102,147,1)_0%,rgba(0,102,147,1)_60%,rgba(168,203,218,1)_86%,rgb(182_241_255)_100%_)];
+}
+
+.three-books-shadow {
+  @apply shadow-[1px_1px_5px_#333] hover:shadow-[5px_5px_35px_#000];
 }

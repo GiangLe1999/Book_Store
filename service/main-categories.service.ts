@@ -19,3 +19,16 @@ export const getAllMainCategories = async (
     return;
   }
 };
+
+export const getAllMainCategoriesWithBooks = async () => {
+  try {
+    const { data }: { data: GetAllMainCategoriesOutput } = await axiosInstance(
+      "/api/public/main-categories/with-books"
+    );
+
+    return data.mainCategories;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
