@@ -23,8 +23,6 @@ export async function GET(req: Request) {
       })
       .sort({ createdAt: 1 });
 
-    console.log(mainCategories[0].books);
-
     return NextResponse.json({ ok: true, mainCategories });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });

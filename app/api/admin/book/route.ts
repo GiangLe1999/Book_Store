@@ -155,8 +155,10 @@ export async function PUT(req: Request) {
         return r.toString() === bookId;
       });
 
-      mainCategory.books.splice(bookIndex, 1);
-      mainCategory.save();
+      if (bookIndex !== -1) {
+        mainCategory.books.splice(bookIndex, 1);
+        mainCategory.save();
+      }
     }
 
     if (mainCategoryId) {
