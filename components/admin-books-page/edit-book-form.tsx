@@ -45,6 +45,8 @@ interface FormValues {
   slug: string;
   downloadLink: string;
   file: FileList;
+  realAuthor: string;
+  publisher: string;
 }
 
 interface Props {
@@ -109,12 +111,15 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
     try {
       setIsLoading(true);
 
-      const { name, description, slug, downloadLink } = formData;
+      const { name, description, slug, downloadLink, realAuthor, publisher } =
+        formData;
 
       const bodyRequest: EditBookInput = {
         name,
         description,
         slug,
+        realAuthor,
+        publisher,
         downloadLink,
         content,
         cover,
@@ -174,6 +179,8 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
     setValue("downloadLink", book?.downloadLink || "");
     setValue("name", book?.name || "");
     setValue("slug", book?.slug || "");
+    setValue("realAuthor", book?.realAuthor || "");
+    setValue("publisher", book?.publisher || "");
   }, []);
 
   return (

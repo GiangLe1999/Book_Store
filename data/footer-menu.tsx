@@ -4,7 +4,7 @@ import { mainHeaderItems } from "./menu";
 
 export const footerCol1 = [
   { title: "Ngày thành lập: ", content: "Thứ  01/12/2023" },
-  { title: "Địa chỉ website: ", content: "https://khosach247.com" },
+  { title: "Website: ", content: "https://khosach247.com" },
   {
     title: "Địa chỉ: ",
     content: "16 Má Hai, phường Tân Hòa, TP. Buôn Ma Thuột, Đăk Lăk",

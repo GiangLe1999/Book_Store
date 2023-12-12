@@ -3,7 +3,6 @@ import ContainNextImage from "@/components/contain-next-image";
 import BookMainCategories from "@/components/home-page/book-main-categories";
 import ThreeBooks from "@/components/home-page/three-books";
 import NextImage from "@/components/next-image";
-import SectionHeading from "@/components/section-heading";
 import { homeBannerUrl, path } from "@/constants";
 import { homeMainChoices } from "@/data/menu";
 import Link from "next/link";
@@ -74,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="main-gradient mt-[45px]">
+      <section className="bg-[linear-gradient(300deg,#034166_0%,#006693_100%)] mt-[45px]">
         <div className="flex items-center gap-8 container py-14">
           <div className="text-white w-[40%]">
             <h3 className="text-3xl leading-relaxed font-garamond">

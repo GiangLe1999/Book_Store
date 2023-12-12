@@ -42,6 +42,8 @@ interface FormValues {
   slug: string;
   downloadLink: string;
   file: FileList;
+  realAuthor: string;
+  publisher: string;
 }
 
 interface Props {
@@ -78,6 +80,8 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
       description: "",
       slug: "",
       downloadLink: "",
+      realAuthor: "",
+      publisher: "",
     },
     resolver: yupResolver(schema),
   });
@@ -101,12 +105,15 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
     try {
       setIsLoading(true);
 
-      const { name, description, slug, downloadLink } = formData;
+      const { name, description, slug, downloadLink, publisher, realAuthor } =
+        formData;
 
       const bodyRequest: CreateBookInput = {
         name,
         description,
         slug,
+        realAuthor,
+        publisher,
         downloadLink,
         content,
         cover,
@@ -227,6 +234,20 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
                 register={register("downloadLink")}
                 errorMsg={errors.downloadLink?.message}
                 placeholder="Nhập link download sách"
+              />
+
+              <FormInput
+                id="realAuthor"
+                label="Tác giả"
+                register={register("realAuthor")}
+                placeholder="Nhập tên tác giả"
+              />
+
+              <FormInput
+                id="realAuthor"
+                label="Nhà xuất bản"
+                register={register("publisher")}
+                placeholder="Nhà tên nhà xuất bản"
               />
 
               <FormOptimizedSelect

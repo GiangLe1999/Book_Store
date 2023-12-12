@@ -9,6 +9,8 @@ export interface IBook {
   cover: IDatabaseImage;
   subCategory?: ObjectId;
   mainCategory?: ObjectId;
+  realAuthor?: string;
+  publisher?: string;
   content: string;
   author: ObjectId;
   views: number;
@@ -55,6 +57,14 @@ const bookSchema: Schema<IBook> = new Schema(
     content: {
       type: String,
       required: true,
+    },
+
+    realAuthor: {
+      type: String,
+    },
+
+    publisher: {
+      type: String,
     },
 
     author: {

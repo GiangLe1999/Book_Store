@@ -18,6 +18,8 @@ export async function POST(req: Request) {
       name,
       slug,
       description,
+      publisher,
+      realAuthor,
       downloadLink,
       cover,
       authorId,
@@ -59,8 +61,10 @@ export async function POST(req: Request) {
       slug,
       description,
       content,
-      ...(savedCover && { cover: savedCover }),
+      publisher,
+      realAuthor,
       downloadLink,
+      ...(savedCover && { cover: savedCover }),
       ...(mainCategoryId && { mainCategory: mainCategoryId }),
       ...(subCategoryId && { subCategory: subCategoryId }),
       author: authorId,
@@ -118,6 +122,8 @@ export async function PUT(req: Request) {
       name,
       slug,
       description,
+      realAuthor,
+      publisher,
       downloadLink,
       cover,
       mainCategoryId,
@@ -218,6 +224,8 @@ export async function PUT(req: Request) {
 
     book.name = name;
     book.slug = slug;
+    book.realAuthor = realAuthor;
+    book.publisher = publisher;
     book.downloadLink = downloadLink;
     book.description = description;
     book.content = content;
