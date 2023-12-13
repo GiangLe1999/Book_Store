@@ -44,6 +44,10 @@ interface FormValues {
   description: string;
   slug: string;
   downloadLink: string;
+  shopeeLink: string;
+  lazadaLink: string;
+  tikiLink: string;
+  fahasaLink: string;
   file: FileList;
   realAuthor: string;
   publisher: string;
@@ -88,6 +92,10 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
       description: "",
       slug: "",
       downloadLink: "",
+      shopeeLink: "",
+      lazadaLink: "",
+      tikiLink: "",
+      fahasaLink: "",
     },
     resolver: yupResolver(schema),
   });
@@ -111,8 +119,18 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
     try {
       setIsLoading(true);
 
-      const { name, description, slug, downloadLink, realAuthor, publisher } =
-        formData;
+      const {
+        name,
+        description,
+        slug,
+        downloadLink,
+        realAuthor,
+        publisher,
+        shopeeLink,
+        lazadaLink,
+        tikiLink,
+        fahasaLink,
+      } = formData;
 
       const bodyRequest: EditBookInput = {
         name,
@@ -121,6 +139,10 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
         realAuthor,
         publisher,
         downloadLink,
+        shopeeLink,
+        lazadaLink,
+        tikiLink,
+        fahasaLink,
         content,
         cover,
         mainCategoryId: selectedMainCategory.value,
@@ -177,6 +199,10 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
   useEffect(() => {
     setValue("description", book?.description || "");
     setValue("downloadLink", book?.downloadLink || "");
+    setValue("shopeeLink", book?.shopeeLink || "");
+    setValue("lazadaLink", book?.lazadaLink || "");
+    setValue("tikiLink", book?.tikiLink || "");
+    setValue("fahasaLink", book?.fahasaLink || "");
     setValue("name", book?.name || "");
     setValue("slug", book?.slug || "");
     setValue("realAuthor", book?.realAuthor || "");
@@ -253,6 +279,34 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
               />
 
               <FormInput
+                id="shopeeLink"
+                label="Link Shopee"
+                register={register("shopeeLink")}
+                placeholder="Nhập link mua sách tại Shopee"
+              />
+
+              <FormInput
+                id="lazadaLink"
+                label="Link Lazada"
+                register={register("lazadaLink")}
+                placeholder="Nhập link mua sách tại Lazada"
+              />
+
+              <FormInput
+                id="tikiLink"
+                label="Link Tiki"
+                register={register("tikiLink")}
+                placeholder="Nhập link mua sách tại Tiki"
+              />
+
+              <FormInput
+                id="fahasaLink"
+                label="Link Fahasa"
+                register={register("fahasaLink")}
+                placeholder="Nhập link mua sách tại Fahasa"
+              />
+
+              <FormInput
                 id="realAuthor"
                 label="Tác giả"
                 register={register("realAuthor")}
@@ -260,7 +314,7 @@ const EditBookForm: FC<Props> = ({ authorId, book }): JSX.Element => {
               />
 
               <FormInput
-                id="realAuthor"
+                id="publisher"
                 label="Nhà xuất bản"
                 register={register("publisher")}
                 placeholder="Nhà tên nhà xuất bản"

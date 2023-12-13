@@ -41,6 +41,10 @@ interface FormValues {
   description: string;
   slug: string;
   downloadLink: string;
+  shopeeLink: string;
+  lazadaLink: string;
+  tikiLink: string;
+  fahasaLink: string;
   file: FileList;
   realAuthor: string;
   publisher: string;
@@ -80,6 +84,10 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
       description: "",
       slug: "",
       downloadLink: "",
+      shopeeLink: "",
+      lazadaLink: "",
+      tikiLink: "",
+      fahasaLink: "",
       realAuthor: "",
       publisher: "",
     },
@@ -105,8 +113,18 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
     try {
       setIsLoading(true);
 
-      const { name, description, slug, downloadLink, publisher, realAuthor } =
-        formData;
+      const {
+        name,
+        description,
+        slug,
+        downloadLink,
+        shopeeLink,
+        lazadaLink,
+        tikiLink,
+        fahasaLink,
+        publisher,
+        realAuthor,
+      } = formData;
 
       const bodyRequest: CreateBookInput = {
         name,
@@ -115,6 +133,10 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
         realAuthor,
         publisher,
         downloadLink,
+        shopeeLink,
+        lazadaLink,
+        tikiLink,
+        fahasaLink,
         content,
         cover,
         mainCategoryId: selectedMainCategory.value,
@@ -234,6 +256,34 @@ const CreateBookForm: FC<Props> = ({ authorId }): JSX.Element => {
                 register={register("downloadLink")}
                 errorMsg={errors.downloadLink?.message}
                 placeholder="Nhập link download sách"
+              />
+
+              <FormInput
+                id="shopeeLink"
+                label="Link Shopee"
+                register={register("shopeeLink")}
+                placeholder="Nhập link mua sách tại Shopee"
+              />
+
+              <FormInput
+                id="lazadaLink"
+                label="Link Lazada"
+                register={register("lazadaLink")}
+                placeholder="Nhập link mua sách tại Lazada"
+              />
+
+              <FormInput
+                id="tikiLink"
+                label="Link Tiki"
+                register={register("tikiLink")}
+                placeholder="Nhập link mua sách tại Tiki"
+              />
+
+              <FormInput
+                id="fahasaLink"
+                label="Link Fahasa"
+                register={register("fahasaLink")}
+                placeholder="Nhập link mua sách tại Fahasa"
               />
 
               <FormInput

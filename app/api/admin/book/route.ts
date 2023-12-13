@@ -21,6 +21,10 @@ export async function POST(req: Request) {
       publisher,
       realAuthor,
       downloadLink,
+      shopeeLink,
+      lazadaLink,
+      tikiLink,
+      fahasaLink,
       cover,
       authorId,
       mainCategoryId,
@@ -64,6 +68,10 @@ export async function POST(req: Request) {
       publisher,
       realAuthor,
       downloadLink,
+      shopeeLink,
+      lazadaLink,
+      tikiLink,
+      fahasaLink,
       ...(savedCover && { cover: savedCover }),
       ...(mainCategoryId && { mainCategory: mainCategoryId }),
       ...(subCategoryId && { subCategory: subCategoryId }),
@@ -125,6 +133,10 @@ export async function PUT(req: Request) {
       realAuthor,
       publisher,
       downloadLink,
+      shopeeLink,
+      lazadaLink,
+      tikiLink,
+      fahasaLink,
       cover,
       mainCategoryId,
       subCategoryId,
@@ -227,6 +239,10 @@ export async function PUT(req: Request) {
     book.realAuthor = realAuthor;
     book.publisher = publisher;
     book.downloadLink = downloadLink;
+    book.shopeeLink = shopeeLink;
+    book.lazadaLink = lazadaLink;
+    book.tikiLink = tikiLink;
+    book.fahasaLink = fahasaLink;
     book.description = description;
     book.content = content;
 

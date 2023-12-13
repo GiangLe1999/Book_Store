@@ -6,6 +6,10 @@ export interface IBook {
   description: string;
   slug: string;
   downloadLink: string;
+  shopeeLink?: string;
+  lazadaLink?: string;
+  tikiLink?: string;
+  fahasaLink?: string;
   cover: IDatabaseImage;
   subCategory?: ObjectId;
   mainCategory?: ObjectId;
@@ -38,6 +42,22 @@ const bookSchema: Schema<IBook> = new Schema(
     downloadLink: {
       type: String,
       required: true,
+    },
+
+    shopeeLink: {
+      type: String,
+    },
+
+    lazadaLink: {
+      type: String,
+    },
+
+    tikiLink: {
+      type: String,
+    },
+
+    fahasaLink: {
+      type: String,
     },
 
     cover: {
