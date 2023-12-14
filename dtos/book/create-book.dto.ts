@@ -5,6 +5,7 @@ export interface CreateBookInput
     IBook,
     | "views"
     | "ratings"
+    | "numOfRatings"
     | "cover"
     | "mainCategory"
     | "subCategory"
