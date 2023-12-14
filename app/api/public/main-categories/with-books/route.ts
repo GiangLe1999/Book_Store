@@ -8,18 +8,13 @@ export async function GET(req: Request) {
   try {
     await dbConnect();
 
-    const mainCategories = await MainCategory.find(
-      {},
-      {
-        books: { $slice: [0, 10] },
-      }
-    )
+    const mainCategories = await MainCategory.find({})
       .select("name slug books")
       .populate({
         path: "books",
         model: Book,
         select: "name slug cover createdAt",
-        options: { sort: { createAt: -1 } },
+        options: { sort: { createAt: -1, limit: 10 } },
       })
       .sort({ createdAt: 1 });
 

@@ -19,3 +19,17 @@ export const getAllSubCategories = async (
     return;
   }
 };
+
+export const getSameTypeSubCategories = async (mainCategoryId: string) => {
+  try {
+    const { data }: { data: GetAllSubCategoriesOutput } = await axiosInstance(
+      "/api/public/sub-categories/same-main-category",
+      { params: { mainCategoryId } }
+    );
+
+    return data.subCategories;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

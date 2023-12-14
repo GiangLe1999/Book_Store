@@ -59,3 +59,43 @@ export const rateBook = async (id: string, rating: number) => {
     return;
   }
 };
+
+export const getSameMainCategoryBooks = async (
+  mainCategoryId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/same-main-category`,
+      {
+        params: { mainCategoryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSameSubCategoryBooks = async (
+  subCategoryId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/same-sub-category`,
+      {
+        params: { subCategoryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

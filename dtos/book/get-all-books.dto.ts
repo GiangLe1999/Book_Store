@@ -3,4 +3,6 @@ import { CoreOutput } from "../common.dto";
 
 export interface GetAllBooksOutput extends CoreOutput {
   books?: BookEntity[];
+  totalPages?: number;
+  numberOfResults?: number;
 }

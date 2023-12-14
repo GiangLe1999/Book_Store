@@ -141,7 +141,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <h3 className="flex items-center py-3 border-b">
               <p className="w-1/2">Loại sách :</p>{" "}
               <Link
-                href={`${path.category}${book?.subCategory.slug}`}
+                href={`${path.category}${book?.mainCategory.slug}/${book?.subCategory.slug}`}
                 className="flex-1 font-bold text-primary hover:underline"
               >
                 {book?.subCategory.name}
@@ -187,6 +187,9 @@ const Page: NextPage<Props> = async ({ params }) => {
             </h2>
             <div className="flex items-center gap-2">
               Đánh giá : <StarRating defaultRating={book?.ratings} readonly />
+              <span className="font-bold">
+                ({book?.ratings} / {book?.numOfRatings} đánh giá)
+              </span>
             </div>
           </div>
 
@@ -230,9 +233,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           </div>
 
           <div className="pb-10 border-b">
-            <h3 className="font-bold text-2xl mt-7 mb-3 text-primary">
-              Sách liên quan
-            </h3>
+            <h3 className="h3-heading">Sách liên quan</h3>
             <RelatedBooks
               categoryId={book?.subCategory._id}
               currentId={book?._id}
@@ -240,9 +241,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           </div>
 
           <div>
-            <h3 className="font-bold text-2xl mt-7 mb-3 text-primary">
-              Cảm nhận của bạn
-            </h3>
+            <h3 className="h3-heading">Cảm nhận của bạn</h3>
 
             <Comments book={book} />
           </div>
