@@ -19,6 +19,7 @@ export interface IBook {
   author: ObjectId;
   views: number;
   ratings: number;
+  numOfRatings: number;
   tags: string[];
 }
 
@@ -99,6 +100,11 @@ const bookSchema: Schema<IBook> = new Schema(
     },
 
     ratings: {
+      type: Number,
+      default: 0,
+    },
+
+    numOfRatings: {
       type: Number,
       default: 0,
     },

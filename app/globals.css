@@ -239,3 +239,8 @@ figure.image figcaption {
 .footer-accordion-list li:hover {
   @apply text-white;
 }
+
+/* Rating */
+svg.star-svg {
+  display: inline;
+}

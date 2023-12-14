@@ -28,7 +28,7 @@ const BookCard: FC<Props> = ({ book }): JSX.Element => {
         </span>
       </Link>
       <Link href={`${path.book}${book.slug}`}>
-        <h4 className="line-clamp-2 group-hover:text-primary transition">
+        <h4 className="line-clamp-2 font-semibold text-gray-500 group-hover:text-primary transition">
           {book.name}
         </h4>
 

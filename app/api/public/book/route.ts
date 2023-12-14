@@ -35,9 +35,12 @@ export async function GET(req: Request) {
       },
     ]);
 
-    if (!slug) {
+    if (!book) {
       return NextResponse.json({ ok: false, error: "Không tìm thấy sách" });
     }
+
+    book.views = book.views + 1;
+    book.save();
 
     return NextResponse.json({ ok: true, book });
   } catch (error: any) {

@@ -23,10 +23,9 @@ export const path = {
   copyrights: "/ban-quyen-noi-dung",
   procedure: "/quy-dinh-su-dung",
   privacy: "/chinh-sach-bao-mat",
+  author: "/tac-gia/",
+  publisher: "/nha-xuat-ban/",
+  tag: "/tag/",
 };
 
 export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";
-
-// Affliate links
-export const shopeeRoot =
-  "https://go.isclix.com/deep_link/5923113585479166044?url=https://shopee.vn/search?keyword=";
