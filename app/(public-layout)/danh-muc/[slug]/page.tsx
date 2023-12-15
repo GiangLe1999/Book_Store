@@ -1,6 +1,7 @@
 import BookCard from "@/components/book-card";
 import Breadcrumbs from "@/components/breadcrumbs";
 import CategoryBooks from "@/components/category-page/category-books";
+import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
 import SubCategoriesList from "@/components/main-category-page/sub-categories-list";
 import { path } from "@/constants";
 import { getMainCategoryBySlug } from "@/service/main-categories.service";
@@ -66,11 +67,11 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
 
       <div className="container">
-        <div className="flex">
+        <div className="flex gap-12">
           <div className="w-[70%]">
             <div className="mb-12">
               <h3 className="h3-heading !mb-6">
-                Danh mục con của{" "}
+                Danh mục con thuộc{" "}
                 <span className="capitalize">{data?.mainCategory.name}</span>
               </h3>
               <SubCategoriesList
@@ -91,7 +92,9 @@ const Page: NextPage<Props> = async ({ params }) => {
             </div>
           </div>
 
-          <div className=""></div>
+          <div className="flex-1 mt-10">
+            <CategoryPageSidebar />
+          </div>
         </div>
       </div>
     </>

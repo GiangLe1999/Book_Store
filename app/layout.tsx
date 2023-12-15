@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/providers/auth-provider";
 import { Toaster } from "react-hot-toast";
 import StyledProgressBar from "@/components/progress-bar";
+import Script from "next/script";
 
 const arsenal = Arsenal({
   subsets: ["latin"],
@@ -30,6 +31,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${arsenal.className} ${garamond.variable}`}>
+        <div id="fb-root"></div>
+        <Script
+          async
+          defer
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=1031833671368098"
+          nonce="pIIyBrop"
+        ></Script>
         <StyledProgressBar />
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />

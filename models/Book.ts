@@ -38,6 +38,7 @@ const bookSchema: Schema<IBook> = new Schema(
     slug: {
       type: String,
       required: true,
+      unique: true,
     },
 
     downloadLink: {

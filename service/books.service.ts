@@ -99,3 +99,42 @@ export const getSameSubCategoryBooks = async (
     return;
   }
 };
+
+export const getMostViewsBooks = async () => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/most-views`
+    );
+
+    return data.books;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getHighestScoresBooks = async () => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/highest-scores`
+    );
+
+    return data.books;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getNewestBooks = async () => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/newest`
+    );
+
+    return data.books;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

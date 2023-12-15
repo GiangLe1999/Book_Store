@@ -350,7 +350,7 @@ export async function DELETE(req: Request) {
       user.save();
     }
 
-    await Book.deleteOne({ _id: id });
+    await Book.findByIdAndDelete(id);
 
     return NextResponse.json({
       ok: true,

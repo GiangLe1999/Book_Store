@@ -53,7 +53,7 @@ const SubCategoriesList: FC<Props> = ({
                 <Link
                   href={`${path.category}${mainCategorySlug}/${subCategory.slug}`}
                   key={subCategory._id}
-                  className="text-gray-500 rounded border shadow px-4 pt-2 pb-[10px] leading-none hover:bg-primary font-bold hover:text-white transition duration-500"
+                  className="text-gray-500 text-sm rounded border shadow px-4 pt-2 pb-[10px] leading-none hover:bg-primary font-bold hover:text-white transition duration-500"
                 >
                   {subCategory.name} ({subCategory.books.length} sách)
                 </Link>
