@@ -1,5 +1,6 @@
 import AdminBooks from "@/components/administrator-page/admin-books";
 import BtnWithIcon from "@/components/btn-with-icon";
+import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
 import NextImage from "@/components/next-image";
 import UserAvatar from "@/components/user-avatar";
 import { domain } from "@/constants";
@@ -133,8 +134,16 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
 
       <div className="container">
-        <h3 className="h3-heading">Sách do {user?.name} đăng tải</h3>
-        <AdminBooks userId={user?._id} />
+        <div className="flex gap-12">
+          <div className="w-[70%]">
+            <h3 className="h3-heading">Sách do {user?.name} đăng tải</h3>
+            <AdminBooks userId={user?._id} />
+          </div>
+
+          <div className="flex-1 mt-10">
+            <CategoryPageSidebar />
+          </div>
+        </div>
       </div>
     </>
   );

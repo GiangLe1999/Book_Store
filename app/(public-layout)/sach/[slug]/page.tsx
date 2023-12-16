@@ -18,6 +18,7 @@ import { StarRating } from "@/components/star-rating";
 import RelatedBooks from "@/components/book-page/related-books";
 import Comments from "@/components/comments";
 import BookRating from "@/components/book-rating";
+import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
 
 interface Props {
   params: { slug: string };
@@ -48,8 +49,8 @@ const Page: NextPage<Props> = async ({ params }) => {
       <div className="main-gradient mt-8 h-[300px] relative"></div>
 
       <div className="flex container -mt-56 gap-16">
-        <div>
-          <div className="relative block w-[300px] border aspect-[0.66] rounded-[5px] transition group-hover:-translate-y-2 shadow-[1px_1px_5px_#333]">
+        <div className="w-[340px]">
+          <div className="relative block w-full border aspect-[0.66] rounded-[5px] transition group-hover:-translate-y-2 shadow-[1px_1px_5px_#333]">
             <NextImage
               src={book?.cover.url || ""}
               alt={book?.name || ""}
@@ -173,6 +174,10 @@ const Page: NextPage<Props> = async ({ params }) => {
             </h3>
 
             <BookRating bookId={book?._id || ""} />
+
+            <div className="mt-4">
+              <CategoryPageSidebar />
+            </div>
           </div>
         </div>
 
@@ -247,7 +252,6 @@ const Page: NextPage<Props> = async ({ params }) => {
 
           <div>
             <h3 className="h3-heading">Cảm nhận của bạn</h3>
-
             <Comments book={book} />
           </div>
         </div>

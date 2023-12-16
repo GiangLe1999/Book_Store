@@ -14,7 +14,7 @@ export async function GET(req: Request) {
         path: "books",
         model: Book,
         select: "name slug cover createdAt",
-        options: { sort: { createAt: -1 }, limit: 10 },
+        options: { sort: { createdAt: -1 }, limit: 10 },
       })
       .sort({ createdAt: 1 });
 

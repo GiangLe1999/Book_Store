@@ -28,6 +28,7 @@ export const path = {
   publisher: "/nha-xuat-ban/",
   allPublishers: "/nha-xuat-ban/tat-ca",
   tag: "/tag/",
+  allTags: "/tag/tat-ca",
   administrator: "/quan-tri-vien/",
 };
 

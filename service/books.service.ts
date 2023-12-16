@@ -1,5 +1,6 @@
 import { GetAllBooksOutput } from "@/dtos/book/get-all-books.dto";
 import { GetBookBySlugOutput } from "@/dtos/book/get-book-by-slug.dto";
+import { GetSameTagBooks } from "@/dtos/book/get-same-tag-books.dto";
 import { CoreOutput } from "@/dtos/common.dto";
 import axiosInstance from "@/lib/axios";
 
@@ -108,6 +109,26 @@ export const getSamePublisherBooks = async (
   try {
     const { data }: { data: GetAllBooksOutput } = await axiosInstance(
       `/api/public/books/same-publisher`,
+      {
+        params: { slug, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSameTagBooks = async (
+  slug: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetSameTagBooks } = await axiosInstance(
+      `/api/public/books/same-tag`,
       {
         params: { slug, page, limit },
       }

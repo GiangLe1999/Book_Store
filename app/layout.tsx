@@ -33,14 +33,6 @@ export default function RootLayout({
       <body
         className={`${arsenal.className} ${garamond.variable} ${arsenal.variable}`}
       >
-        <div id="fb-root"></div>
-        <Script
-          async
-          defer
-          crossOrigin="anonymous"
-          src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=1031833671368098"
-          nonce="pIIyBrop"
-        ></Script>
         <StyledProgressBar />
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
