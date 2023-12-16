@@ -26,7 +26,7 @@ const page: NextPage<Props> = async ({ params }) => {
         <li>
           <Link
             href={`${path.category}${params.slug}`}
-            className="hover:underline text-primary font-semibold"
+            className="hover:underline"
           >
             {data?.subCategory?.mainCategory?.name}
           </Link>
