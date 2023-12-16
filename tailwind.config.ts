@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         garamond: ["var(--font-garamond)"],
+        arsenal: ["var(--font-arsenal)"],
       },
       colors: {
         primary: "#006693",

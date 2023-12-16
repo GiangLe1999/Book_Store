@@ -25,6 +25,7 @@ export const path = {
   privacy: "/chinh-sach-bao-mat",
   author: "/tac-gia/",
   publisher: "/nha-xuat-ban/",
+  allPublishers: "/nha-xuat-ban/tat-ca",
   tag: "/tag/",
 };
 

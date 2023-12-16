@@ -18,13 +18,10 @@ export async function GET(req: Request) {
       .select("name slug cover createdAt")
       .limit(4)
       .sort({
-        updatedAt: -1,
+        createdAt: -1,
       });
-    const relatedBooks = books.filter(
-      (book: any) => book._id.toString() !== currentId
-    );
 
-    return NextResponse.json({ ok: true, books: relatedBooks });
+    return NextResponse.json({ ok: true, books });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });
   }

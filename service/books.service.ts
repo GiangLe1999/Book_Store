@@ -63,7 +63,7 @@ export const rateBook = async (id: string, rating: number) => {
 export const getSameMainCategoryBooks = async (
   mainCategoryId: string,
   page: number = 1,
-  limit: number = 6
+  limit: number = 8
 ) => {
   try {
     const { data }: { data: GetAllBooksOutput } = await axiosInstance(
@@ -83,13 +83,33 @@ export const getSameMainCategoryBooks = async (
 export const getSameSubCategoryBooks = async (
   subCategoryId: string,
   page: number = 1,
-  limit: number = 6
+  limit: number = 8
 ) => {
   try {
     const { data }: { data: GetAllBooksOutput } = await axiosInstance(
       `/api/public/books/same-sub-category`,
       {
         params: { subCategoryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSamePublisherBooks = async (
+  slug: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/same-publisher`,
+      {
+        params: { slug, page, limit },
       }
     );
 

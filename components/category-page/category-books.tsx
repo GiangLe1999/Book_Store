@@ -1,15 +1,11 @@
 "use client";
 import { BookEntity } from "@/entities/book.entity";
 import { FC, useEffect, useState } from "react";
-import ResponsivePagination from "react-responsive-pagination";
-import "react-responsive-pagination/themes/classic.css";
-import "react-loading-skeleton/dist/skeleton.css";
-import Skeleton from "react-loading-skeleton";
 import {
   getSameMainCategoryBooks,
   getSameSubCategoryBooks,
 } from "@/service/books.service";
-import BookCard from "../book-card";
+import BooksList from "../books-list";
 
 interface Props {
   categoryId: string | undefined;
@@ -44,40 +40,13 @@ const CategoryBooks: FC<Props> = ({
   }, [categoryId, currentPage]);
 
   return (
-    <div>
-      <>
-        {isLoading ? (
-          <div className="grid grid-cols-4 gap-8">
-            {[...Array(9).keys()].map((item) => (
-              <Skeleton className="w-full aspect-[0.66]" key={item} />
-            ))}
-          </div>
-        ) : (
-          <>
-            {books && books?.length > 0 ? (
-              <div>
-                <div className="grid grid-cols-4 gap-8">
-                  {books?.map((book) => (
-                    <BookCard key={book._id.toString()} book={book} />
-                  ))}
-                </div>
-                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
-                  <ResponsivePagination
-                    current={currentPage}
-                    total={totalPages}
-                    onPageChange={setCurrentPage}
-                    previousLabel="Trang trước"
-                    nextLabel="Trang sau"
-                  />
-                </div>
-              </div>
-            ) : (
-              <p>Không tìm thấy sách phù hợp</p>
-            )}
-          </>
-        )}
-      </>
-    </div>
+    <BooksList
+      books={books}
+      currentPage={currentPage}
+      isLoading={isLoading}
+      setCurrentPage={setCurrentPage}
+      totalPages={totalPages}
+    />
   );
 };
 

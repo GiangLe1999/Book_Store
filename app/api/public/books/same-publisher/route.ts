@@ -1,3 +1,4 @@
+import slugify from "slugify";
 import dbConnect from "@/lib/db";
 import Book from "@/models/Book";
 import { NextResponse } from "next/server";
@@ -6,27 +7,26 @@ export const dynamic = "force-dynamic";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const mainCategoryId = searchParams.get("mainCategoryId");
+    const slug = searchParams.get("slug");
     const page = Number(searchParams.get("page"));
     const limit = Number(searchParams.get("limit"));
 
-    let skip = (page - 1) * limit + 4;
-
-    let numberOfResults = await Book.countDocuments({
-      mainCategory: mainCategoryId,
-    });
+    let skip = (page - 1) * limit;
 
     await dbConnect();
 
-    let books = await Book.find({
-      mainCategory: mainCategoryId,
-    })
-      .select("name slug cover createdAt")
-      .skip(skip)
-      .limit(limit)
+    let allBooks = await Book.find()
+      .select("name slug cover createdAt publisher")
       .sort({ createdAt: -1 });
 
-    const totalPages = Math.ceil(numberOfResults / limit);
+    const booksOfPublisher = allBooks.filter((book) => {
+      const bookPublisher = slugify(book.publisher || "", { lower: true });
+      return bookPublisher === slug;
+    });
+
+    const books = booksOfPublisher.slice(skip, skip + limit);
+
+    const totalPages = Math.ceil(booksOfPublisher.length / limit);
 
     return NextResponse.json({ ok: true, books, totalPages });
   } catch (error: any) {

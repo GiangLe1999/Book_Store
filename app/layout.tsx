@@ -30,7 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${arsenal.className} ${garamond.variable}`}>
+      <body
+        className={`${arsenal.className} ${garamond.variable} ${arsenal.variable}`}
+      >
         <div id="fb-root"></div>
         <Script
           async
