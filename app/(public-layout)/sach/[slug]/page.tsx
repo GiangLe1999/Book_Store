@@ -163,7 +163,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <h3 className="flex items-center py-3 border-b">
               <p className="w-1/2">Người đăng tải :</p>{" "}
               <Link
-                href={`${path.author}${slugify(book?.author.name || "", {
+                href={`${path.administrator}${slugify(book?.author.name || "", {
                   lower: true,
                 })}`}
                 className="flex-1 font-bold text-primary hover:underline"
@@ -181,7 +181,12 @@ const Page: NextPage<Props> = async ({ params }) => {
           <div className="flex items-center gap-8 mt-4 text-white">
             <h2>
               Tác giả :{" "}
-              <Link href="" className="font-semibold hover:underline">
+              <Link
+                href={`${path.author}${slugify(book?.realAuthor || "", {
+                  lower: true,
+                })}`}
+                className="font-semibold hover:underline"
+              >
                 {book?.realAuthor}
               </Link>
             </h2>

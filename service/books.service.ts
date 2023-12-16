@@ -120,6 +120,46 @@ export const getSamePublisherBooks = async (
   }
 };
 
+export const getSameAuthorBooks = async (
+  slug: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/same-author`,
+      {
+        params: { slug, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSameUserBooks = async (
+  userId: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/same-user`,
+      {
+        params: { userId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
 export const getMostViewsBooks = async () => {
   try {
     const { data }: { data: GetAllBooksOutput } = await axiosInstance(

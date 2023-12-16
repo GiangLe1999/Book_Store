@@ -1,4 +1,5 @@
 import { MyProfileOutput } from "@/dtos/user/my-profile.dto";
+import { UserEntity } from "@/entities/user.entity";
 import axiosInstance from "@/lib/axios";
 
 export const getUserProfileById = async (userId: string) => {
@@ -8,6 +9,17 @@ export const getUserProfileById = async (userId: string) => {
     );
 
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserProfileBySlug = async (slug: string) => {
+  try {
+    const { data }: { data: { user: UserEntity; ok: boolean } } =
+      await axiosInstance(`/api/public/user?slug=${slug}`);
+
+    return data.user;
   } catch (error) {
     console.log(error);
   }

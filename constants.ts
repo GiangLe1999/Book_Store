@@ -24,9 +24,13 @@ export const path = {
   procedure: "/quy-dinh-su-dung",
   privacy: "/chinh-sach-bao-mat",
   author: "/tac-gia/",
+  allAuthors: "/tac-gia/tat-ca",
   publisher: "/nha-xuat-ban/",
   allPublishers: "/nha-xuat-ban/tat-ca",
   tag: "/tag/",
+  administrator: "/quan-tri-vien/",
 };
 
 export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";
+
+export const domain = "khosach247.com";
