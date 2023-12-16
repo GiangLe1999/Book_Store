@@ -82,7 +82,7 @@ export default function Home() {
             </h3>
             <Link
               href={`${path.category}lop-hoc`}
-              className="flex items-center bg-white rounded w-fit text-primary py-3 px-4 font-bold text-lg mt-3 hover:scale-105 transition duration-500"
+              className="flex items-center bg-white rounded w-fit text-primary py-3 px-4 font-bold text-lg mt-3 hover:translate-x-3 transition duration-500"
             >
               Xem thêm tại đây{" "}
               <FaArrowRightLong className="ml-2 mt-[2px]" size={14} />

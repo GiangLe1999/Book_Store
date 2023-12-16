@@ -35,6 +35,19 @@ export const getAllMainCategoriesWithBooks = async () => {
   }
 };
 
+export const getAllMainCategoriesWithSubCategories = async () => {
+  try {
+    const { data }: { data: GetAllMainCategoriesOutput } = await axiosInstance(
+      "/api/public/main-categories/with-sub-categories"
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
 export const getMainCategoryBySlug = async (slug: string) => {
   try {
     const {

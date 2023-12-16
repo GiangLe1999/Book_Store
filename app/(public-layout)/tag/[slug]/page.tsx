@@ -8,10 +8,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa";
 import { BookEntity } from "@/entities/book.entity";
-import {
-  getSamePublisherBooks,
-  getSameTagBooks,
-} from "@/service/books.service";
+import { getSameTagBooks } from "@/service/books.service";
 import BooksList from "@/components/books-list";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
