@@ -118,6 +118,8 @@ export const footerAccordionData = [
 export const footerCol31 = [
   { title: "Tất Cả Sách", link: path.allBooks },
   { title: "Tất Cả Danh Mục", link: path.allCategories },
+  { title: "Tất Cả Thẻ", link: path.allTags },
+  { title: "Tất Cả NXB", link: path.allPublishers },
   { title: "Blog", link: path.allArticles },
 ];
 

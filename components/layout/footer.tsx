@@ -10,6 +10,8 @@ import {
   footerCol4,
 } from "@/data/footer-menu";
 import Socials from "./socials";
+import RecommendBooksTabs from "../recommend-books-tabs";
+import FooterMostViewsBooks from "./footer-most-views-books";
 
 interface Props {}
 
@@ -79,6 +81,7 @@ const Footer: FC<Props> = (): JSX.Element => {
         {/* Column 4 */}
         <div className="flex-1">
           <p className="footer-title">Sách đọc nhiều</p>
+          <FooterMostViewsBooks />
         </div>
       </div>
 

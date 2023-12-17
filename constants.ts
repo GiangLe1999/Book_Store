@@ -30,6 +30,7 @@ export const path = {
   tag: "/tag/",
   allTags: "/tag/tat-ca",
   administrator: "/quan-tri-vien/",
+  search: "/tim-kiem",
 };
 
 export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";

@@ -180,6 +180,36 @@
   @apply rounded-md w-1/2 py-0;
 }
 
+/* Sidebar Modal */
+.root-sidebar .react-responsive-modal-modal {
+  @apply !h-screen;
+}
+
+.root-sidebar.react-responsive-modal-container {
+  @apply !text-left;
+}
+
+@keyframes customRootSidebarEnter {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes customRootSidebarLeave {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
 /* Text editor */
 .tox-tinymce {
   @apply !border-[1px] !border-[#e5e7eb] !rounded-md !h-[600px];

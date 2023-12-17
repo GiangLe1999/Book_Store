@@ -31,6 +31,7 @@ export default function Home() {
               iconCustomClasses="ml-2 mt-[2px]"
               iconSize={14}
               isFrontpage
+              to={path.allBooks}
             />
           </div>
           <div className="w-full aspect-[0.9708] relative">

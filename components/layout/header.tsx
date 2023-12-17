@@ -1,5 +1,5 @@
 import { path } from "@/constants";
-import { mainHeaderItems, socialItems, topHeaderItems } from "@/data/menu";
+import { mainHeaderItems, topHeaderItems } from "@/data/menu";
 import moment from "moment";
 import "moment/locale/vi";
 import Link from "next/link";
@@ -7,12 +7,13 @@ import { FC } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from "../logo";
 import Socials from "./socials";
+import SearchBar from "./search-bar";
 
 interface Props {}
 
 const Header: FC<Props> = (props): JSX.Element => {
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50 max-[1250px]:hidden">
       {/* Navbar 1 */}
       <nav className="main-gradient py-2">
         <div className="container text-white text-sm flex justify-between">
@@ -54,6 +55,8 @@ const Header: FC<Props> = (props): JSX.Element => {
           </ul>
 
           <div className="flex items-center gap-6">
+            <SearchBar />
+
             <Socials />
 
             <span className="capitalize">

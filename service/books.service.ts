@@ -181,10 +181,11 @@ export const getSameUserBooks = async (
   }
 };
 
-export const getMostViewsBooks = async () => {
+export const getMostViewsBooks = async (forFooter: boolean = false) => {
   try {
     const { data }: { data: GetAllBooksOutput } = await axiosInstance(
-      `/api/public/books/most-views`
+      `/api/public/books/most-views`,
+      { params: { forFooter } }
     );
 
     return data.books;
@@ -232,6 +233,26 @@ export const getBooksByFilter = async (
       `/api/public/books/filter`,
       {
         params: { mainCategoryId, subCategoryId, sortBy, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSearchResults = async (
+  query: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/search`,
+      {
+        params: { query, page, limit },
       }
     );
 
