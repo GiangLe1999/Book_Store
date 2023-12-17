@@ -14,7 +14,11 @@ export const footerCol1 = [
 
 export const footerAccordionData = [
   {
-    header: "Lớp Học",
+    header: (
+      <Link href={`${path.category}lop-hoc`} className="footer-accordion-list">
+        Lớp Học
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[0].children.map((child) => (
@@ -26,7 +30,14 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Ôn Thi Đại Học",
+    header: (
+      <Link
+        href={`${path.category}on-thi-dai-hoc`}
+        className="footer-accordion-list"
+      >
+        Ôn Thi Đại Học
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         <ul className="footer-accordion-list">
@@ -40,7 +51,11 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Kinh Tế",
+    header: (
+      <Link href={`${path.category}kinh-te`} className="footer-accordion-list">
+        Kinh Tế
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         <ul className="footer-accordion-list">
@@ -54,7 +69,11 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Kỹ Năng",
+    header: (
+      <Link href={`${path.category}ki-nang`} className="footer-accordion-list">
+        Kỹ Năng
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[3].children.map((child) => (
@@ -66,7 +85,11 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Văn Học",
+    header: (
+      <Link href={`${path.category}van-hoc`} className="footer-accordion-list">
+        Văn Học
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[4].children.map((child) => (
@@ -78,7 +101,14 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Tiếng Anh",
+    header: (
+      <Link
+        href={`${path.category}tieng-anh`}
+        className="footer-accordion-list"
+      >
+        Tiếng Anh
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[5].children.map((child) => (
@@ -90,7 +120,14 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Ngoại Ngữ Khác",
+    header: (
+      <Link
+        href={`${path.category}ngoai-ngu-khac`}
+        className="footer-accordion-list"
+      >
+        Ngoại Ngữ Khác
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[6].children.map((child) => (
@@ -102,7 +139,11 @@ export const footerAccordionData = [
     ),
   },
   {
-    header: "Truyện",
+    header: (
+      <Link href={`${path.category}truyen`} className="footer-accordion-list">
+        Truyện
+      </Link>
+    ),
     content: (
       <ul className="footer-accordion-list">
         {mainHeaderItems[7].children.map((child) => (

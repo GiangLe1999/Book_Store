@@ -1,16 +1,24 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { HiMenu, HiSearch } from "react-icons/hi";
 import Logo from "../logo";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import RootSidebar from "./root-sidebar";
+import { usePathname } from "next/navigation";
 
 interface Props {}
 
 const MobileHeader: FC<Props> = (props): JSX.Element => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const modalRef = useRef(null);
+  const pathName = usePathname();
+
+  useEffect(() => {
+    setShowSidebar(false);
+  }, [pathName]);
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 max-[1250px]:block hidden border-b">
@@ -29,8 +37,11 @@ const MobileHeader: FC<Props> = (props): JSX.Element => {
         </div>
       </header>
       <Modal
+        ref={modalRef}
+        initialFocusRef={modalRef}
         open={showSidebar}
         onClose={() => setShowSidebar(false)}
+        showCloseIcon={false}
         classNames={{
           modalContainer: "root-sidebar",
           overlayAnimationIn: "customEnterOverlayAnimation",
@@ -39,7 +50,9 @@ const MobileHeader: FC<Props> = (props): JSX.Element => {
           modalAnimationOut: "customRootSidebarLeave",
         }}
       >
-        <RootSidebar />
+        <>
+          <RootSidebar />
+        </>
       </Modal>
     </>
   );

@@ -11,21 +11,30 @@ import { FiChevronDown } from "react-icons/fi";
 interface ItemsProps {
   header: string;
   children: JSX.Element | JSX.Element[] | ReactNode;
+  isSidebar?: boolean;
 }
 
-const AccordionItem: FC<ItemsProps> = ({ header, ...rest }) => {
+const AccordionItem: FC<ItemsProps> = ({ header, isSidebar, ...rest }) => {
   return (
     <Item
       {...rest}
       header={({ state: { isEnter } }) => (
-        <div className="flex items-center justify-between w-[80%]">
-          <span className="block text-[#dbdbdb] text-sm transition">
+        <div
+          className={`flex items-center justify-between ${
+            isSidebar ? "w-full" : "w-[80%]"
+          }`}
+        >
+          <span
+            className={`block ${
+              isSidebar ? "text-gray-700 py-1" : "text-[#dbdbdb] text-sm"
+            } transition`}
+          >
             {header}
           </span>
           <FiChevronDown
-            className={`ml-auto transition-transform duration-200 ease-out w-3 h-3 text-[#dbdbdb] ${
-              isEnter && "rotate-180"
-            }`}
+            className={`ml-auto transition-transform duration-200 ease-out w-3 h-3  ${
+              isSidebar ? "text-gray-700" : "text-[#dbdbdb]"
+            } ${isEnter && "rotate-180"}`}
           />
         </div>
       )}
@@ -42,15 +51,24 @@ const AccordionItem: FC<ItemsProps> = ({ header, ...rest }) => {
 };
 
 interface Props {
-  data: { header: string; content: ReactNode }[];
+  data: { header: ReactNode; content: ReactNode }[];
+  isSidebar?: boolean;
 }
 
-const FooterAccordion: FC<Props> = ({ data }): JSX.Element => {
+const FooterAccordion: FC<Props> = ({ data, isSidebar }): JSX.Element => {
   return (
-    <div className="my-4 transition text-white">
+    <div
+      className={`my-4 transition ${
+        isSidebar ? "text-gray-700" : "text-white"
+      }`}
+    >
       <Accordion transition transitionTimeout={500}>
         {data.map((group, index) => (
-          <AccordionItem header={group.header} key={index}>
+          <AccordionItem
+            header={group.header as string}
+            key={index}
+            isSidebar={isSidebar}
+          >
             {group.content}
           </AccordionItem>
         ))}
