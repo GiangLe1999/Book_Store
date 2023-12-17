@@ -13,9 +13,9 @@ export default function Home() {
     <>
       {/* Hero */}
       <section>
-        <div className="grid grid-cols-2 container">
+        <div className="grid grid-cols-2 container max-[830px]:grid-cols-1 gap-x-4 gap-y-14">
           <div className="flex flex-col -mt-[30px] justify-center">
-            <h1 className="font-garamond text-[50px] mb-4 text-dark_blue leading-tight tracking-tight">
+            <h1 className="font-garamond text-[50px] max-[1000px]:text-[40px] mb-4 text-dark_blue leading-tight tracking-tight">
               Kho Sách 247 - Thư viện PDF miễn phí của bạn
             </h1>
             <h2 className="text-lg text-dark_blue mb-2">
@@ -26,7 +26,7 @@ export default function Home() {
             </h2>
             <BtnWithIcon
               content="Tham khảo toàn bộ sách tại đây"
-              customClasses="!w-fit !text-lg mt-3"
+              customClasses="!w-fit !text-lg mt-3 max-[500px]:!w-full"
               iconBehind={FaArrowRightLong}
               iconCustomClasses="ml-2 mt-[2px]"
               iconSize={14}
@@ -34,7 +34,7 @@ export default function Home() {
               to={path.allBooks}
             />
           </div>
-          <div className="w-full aspect-[0.9708] relative">
+          <div className="w-full aspect-[0.9708] relative max-[830px]:w-[70%] max-[650px]:w-full max-[830px]:mx-auto">
             <NextImage
               src={homeBannerUrl}
               alt="Banner trang chủ Kho sách 247"
@@ -44,7 +44,7 @@ export default function Home() {
       </section>
 
       <section className="mt-[30px]">
-        <div className="container grid grid-cols-3 gap-16">
+        <div className="container grid grid-cols-3 gap-16 max-[870px]:grid-cols-2 max-[600px]:grid-cols-1">
           {homeMainChoices.map((choice, index: number) => (
             <>
               <Link
@@ -75,15 +75,15 @@ export default function Home() {
       </section>
 
       <section className="bg-[linear-gradient(300deg,#034166_0%,#006693_100%)] mt-[45px]">
-        <div className="flex items-center gap-8 container py-14">
-          <div className="text-white w-[40%]">
-            <h3 className="text-3xl leading-relaxed font-garamond">
+        <div className="flex items-center gap-8 container py-14 max-[1250px]:block">
+          <div className="text-white w-[40%] max-[1250px]:w-full max-[1250px]:text-center max-[1250px]:mb-14">
+            <h3 className="text-3xl max-[550px]:text-2xl max-[550px]:mb-6 leading-relaxed font-garamond">
               Download trọn Bộ PDF Sách Giáo Khoa Lớp 1 - Lớp 12 hoàn toàn miễn
               phí
             </h3>
             <Link
               href={`${path.category}lop-hoc`}
-              className="flex items-center bg-white rounded w-fit text-primary py-3 px-4 font-bold text-lg mt-3 hover:translate-x-3 transition duration-500"
+              className="flex items-center bg-white rounded w-fit text-primary py-3 px-4 font-bold text-lg mt-3 hover:translate-x-3 transition duration-500 max-[1250px]:mx-auto"
             >
               Xem thêm tại đây{" "}
               <FaArrowRightLong className="ml-2 mt-[2px]" size={14} />

@@ -1,6 +1,6 @@
 import { path } from "@/constants";
 import Link from "next/link";
-import { mainHeaderItems } from "./menu";
+import { mainHeaderItems, topHeaderItems } from "./menu";
 
 export const footerCol1 = [
   { title: "Ngày thành lập: ", content: "Thứ  01/12/2023" },
@@ -35,7 +35,7 @@ export const footerAccordionData = [
         href={`${path.category}on-thi-dai-hoc`}
         className="footer-accordion-list"
       >
-        Ôn Thi Đại Học
+        Ôn Thi ĐH
       </Link>
     ),
     content: (
@@ -125,7 +125,7 @@ export const footerAccordionData = [
         href={`${path.category}ngoai-ngu-khac`}
         className="footer-accordion-list"
       >
-        Ngoại Ngữ Khác
+        Ngoại Ngữ
       </Link>
     ),
     content: (
@@ -153,6 +153,74 @@ export const footerAccordionData = [
         ))}
       </ul>
     ),
+  },
+  {
+    header: (
+      <Link href={`${path.category}gia-dinh`} className="footer-accordion-list">
+        Gia Đình
+      </Link>
+    ),
+    content: (
+      <ul className="footer-accordion-list">
+        {topHeaderItems[0].children &&
+          topHeaderItems[0].children.map((child) => (
+            <li key={child.name}>
+              <Link href={`${path.category}${child.slug}`}>{child.name}</Link>
+            </li>
+          ))}
+      </ul>
+    ),
+  },
+  {
+    header: (
+      <Link
+        href={`${path.category}tu-vi-phong-thuy`}
+        className="footer-accordion-list"
+      >
+        Tử Vi
+      </Link>
+    ),
+    content: (
+      <ul className="footer-accordion-list">
+        {topHeaderItems[1].children &&
+          topHeaderItems[1].children.map((child) => (
+            <li key={child.name}>
+              <Link href={`${path.category}${child.slug}`}>{child.name}</Link>
+            </li>
+          ))}
+      </ul>
+    ),
+  },
+  {
+    header: (
+      <Link
+        href={`${path.category}nong-lam-ngu-nghiep`}
+        className="footer-accordion-list"
+      >
+        NLNN
+      </Link>
+    ),
+    content: (
+      <ul className="footer-accordion-list">
+        {topHeaderItems[2].children &&
+          topHeaderItems[2].children.map((child) => (
+            <li key={child.name}>
+              <Link href={`${path.category}${child.slug}`}>{child.name}</Link>
+            </li>
+          ))}
+      </ul>
+    ),
+  },
+  {
+    header: (
+      <Link
+        href={`${path.category}khoa-hoc-ky-thuat`}
+        className="footer-accordion-list"
+      >
+        KHKT
+      </Link>
+    ),
+    content: "",
   },
 ];
 

@@ -72,7 +72,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <div className="mb-12">
               <h3 className="h3-heading !mb-6">
                 Danh mục con thuộc{" "}
-                <span className="capitalize">{data?.mainCategory.name}</span>
+                <span className="capitalize">{data?.mainCategory?.name}</span>
               </h3>
               <SubCategoriesList
                 mainCategoryId={data?.mainCategory?._id}
@@ -83,7 +83,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <div>
               <h3 className="h3-heading">
                 Sách thuộc danh mục{" "}
-                <span className="capitalize">{data?.mainCategory.name}</span>
+                <span className="capitalize">{data?.mainCategory?.name}</span>
               </h3>
               <CategoryBooks
                 categoryId={data?.mainCategory?._id}

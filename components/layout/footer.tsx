@@ -10,7 +10,6 @@ import {
   footerCol4,
 } from "@/data/footer-menu";
 import Socials from "./socials";
-import RecommendBooksTabs from "../recommend-books-tabs";
 import FooterMostViewsBooks from "./footer-most-views-books";
 
 interface Props {}
@@ -18,9 +17,9 @@ interface Props {}
 const Footer: FC<Props> = (): JSX.Element => {
   return (
     <footer className="mt-14 main-gradient border-t">
-      <div className="container flex flex-wrap gap-1 py-10 max-[1017px]:gap-3">
+      <div className="container flex flex-wrap gap-1 py-10 max-[1017px]:gap-3 max-[350px]:block">
         {/* Column1 */}
-        <div className="w-1/3 pr-3 max-[1017px]:w-[50%] max-[717px]:w-full">
+        <div className="w-1/3 pr-3 max-[1017px]:w-[50%] max-[717px]:w-full max-[717px]:mb-4">
           {/* General info */}
           <p className="footer-title">KHO SÁCH 247 - THƯ VIỆN PDF MIỄN PHÍ</p>
           <ul>

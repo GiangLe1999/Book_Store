@@ -21,6 +21,12 @@ const BooksSwiper: FC<Props> = ({ books }): JSX.Element => {
       slidesPerGroup={1}
       navigation={false}
       loop={true}
+      breakpoints={{
+        0: { slidesPerView: 2 },
+        700: { slidesPerView: 3 },
+        900: { slidesPerView: 4 },
+        1100: { slidesPerView: 5 },
+      }}
     >
       {books?.map((book) => (
         <SwiperSlide key={book._id}>
