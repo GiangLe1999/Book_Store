@@ -297,3 +297,8 @@ svg.star-svg {
 .pagination .page-item.disabled .page-link {
   @apply !text-[#ccc];
 }
+
+/* Book grid */
+.book-grid {
+  @apply grid grid-cols-4 max-[1024px]:grid-cols-2 max-[850px]:grid-cols-4 gap-6 max-[600px]:grid-cols-2;
+}

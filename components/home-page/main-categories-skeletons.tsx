@@ -6,9 +6,6 @@ import { useMediaQuery } from "react-responsive";
 interface Props {}
 
 const MainCategoriesSkeletons: FC<Props> = (props): JSX.Element => {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1101px)",
-  });
   const level1 = useMediaQuery({ query: "(min-width: 1100px)" });
   const level2 = useMediaQuery({ query: "(min-width: 900px)" });
   const level3 = useMediaQuery({ query: "(min-width: 700px)" });

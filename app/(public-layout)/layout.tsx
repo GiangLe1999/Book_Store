@@ -12,7 +12,7 @@ const layout: FC<Props> = ({ children }): JSX.Element => {
     <>
       <Header />
       <MobileHeader />
-      <main className="mt-[130px]">{children}</main>
+      <main className="mt-[130px] max-[1250px]:mt-[85px]">{children}</main>
       <Footer />
     </>
   );

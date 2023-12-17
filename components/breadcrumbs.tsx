@@ -9,7 +9,7 @@ interface Props {
 const Breadcrumbs: FC<Props> = ({ children }): JSX.Element => {
   return (
     <div className="container">
-      <ul className="flex items-center gap-4 text-gray-600">
+      <ul className="flex flex-wrap items-center gap-4 text-gray-600">
         <li className="hover:underline">
           <Link href="/">Trang chủ</Link>
         </li>

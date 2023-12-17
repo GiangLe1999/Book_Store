@@ -41,7 +41,7 @@ const RelatedBooks: FC<Props> = ({ categoryId, currentId }): JSX.Element => {
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-4 gap-6">
+          <div className="book-grid">
             {[...Array(4).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.66]" key={item} />
             ))}
@@ -50,7 +50,7 @@ const RelatedBooks: FC<Props> = ({ categoryId, currentId }): JSX.Element => {
           <>
             {relatedBooks && relatedBooks?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-4 gap-6">
+                <div className="book-grid">
                   {relatedBooks?.map((book) => (
                     <BookCard key={book._id.toString()} book={book} />
                   ))}

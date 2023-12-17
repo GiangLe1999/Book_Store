@@ -7,6 +7,7 @@ import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import RootSidebar from "./root-sidebar";
 import { usePathname } from "next/navigation";
+import SearchBar from "./search-bar";
 
 interface Props {}
 
@@ -14,6 +15,7 @@ const MobileHeader: FC<Props> = (props): JSX.Element => {
   const [showSidebar, setShowSidebar] = useState(false);
   const modalRef = useRef(null);
   const pathName = usePathname();
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
     setShowSidebar(false);
@@ -30,10 +32,21 @@ const MobileHeader: FC<Props> = (props): JSX.Element => {
 
             <Logo wrapperClasses="w-[200px] h-[30px]" textWhite />
 
-            <button className="text-white">
+            <button
+              className="text-white"
+              onClick={() => setShowSearchBar(!showSearchBar)}
+            >
               <HiSearch size={30} />
             </button>
           </div>
+        </div>
+
+        <div
+          className={`absolute top-full right-0 left-0 ${
+            showSearchBar ? "translate-y-0" : "-translate-y-full"
+          } transition z-[-1]`}
+        >
+          <SearchBar isMobile />
         </div>
       </header>
       <Modal

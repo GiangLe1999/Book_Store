@@ -50,7 +50,9 @@ const SearchBar: FC<Props> = ({ isMobile }): JSX.Element => {
       }  bg-light_gray rounded-[40px] text-black_text transition-width`}
     >
       <input
-        className="w-[148px] h-full py-1 bg-transparent outline-none px-4 font-black placeholder:text-black_text placeholder:font-black hover:placeholder:opacity-60 transition"
+        className={`${
+          isMobile ? "flex-1" : "w-[148px]"
+        } h-full py-1 bg-transparent outline-none px-4 font-black placeholder:text-black_text placeholder:font-black hover:placeholder:opacity-60 transition`}
         placeholder={placeholder}
         onFocus={() => {
           if (!isMobile) {

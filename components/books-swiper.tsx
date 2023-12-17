@@ -20,7 +20,6 @@ const BooksSwiper: FC<Props> = ({ books }): JSX.Element => {
       slidesPerView={5}
       slidesPerGroup={1}
       navigation={false}
-      loop={true}
       breakpoints={{
         0: { slidesPerView: 2 },
         700: { slidesPerView: 3 },

@@ -5,20 +5,17 @@ import { getBookBySlug } from "@/service/books.service";
 import { NextPage } from "next";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
-import moment from "moment";
-import "moment/locale/vi";
-import BookSocialShare from "@/components/book-page/book-social-share-btns";
 import parse from "html-react-parser";
 import BtnWithIcon from "@/components/btn-with-icon";
 import { FaOpencart } from "react-icons/fa";
 import { MdFileDownload } from "react-icons/md";
 import ContainNextImage from "@/components/contain-next-image";
 import slugify from "slugify";
-import { StarRating } from "@/components/star-rating";
 import RelatedBooks from "@/components/book-page/related-books";
 import Comments from "@/components/comments";
 import BookRating from "@/components/book-rating";
 import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
+import BookGeneralInfo from "@/components/book-page/book-general-info";
 
 interface Props {
   params: { slug: string };
@@ -46,11 +43,24 @@ const Page: NextPage<Props> = async ({ params }) => {
         </li>
       </Breadcrumbs>
 
-      <div className="main-gradient mt-8 h-[300px] relative"></div>
+      <div className="main-gradient mt-8 h-[300px] relative max-[1250px]:h-auto max-[1250px]:py-10 flex flex-col items-center">
+        <div className="max-[1250px]:block relative hidden w-[300px] border aspect-[0.66] rounded-[5px] transition group-hover:-translate-y-2 shadow-[1px_1px_5px_#333] mb-6">
+          <NextImage
+            src={book?.cover.url || ""}
+            alt={book?.name || ""}
+            priority
+            className="rounded-[5px]"
+          />
+        </div>
 
-      <div className="flex container -mt-56 gap-16">
-        <div className="w-[340px]">
-          <div className="relative block w-full border aspect-[0.66] rounded-[5px] transition group-hover:-translate-y-2 shadow-[1px_1px_5px_#333]">
+        <div className="hidden max-[1250px]:block text-center max-[1250px]:w-full max-[1250px]:px-4">
+          <BookGeneralInfo book={book} />
+        </div>
+      </div>
+
+      <div className="flex container -mt-56 max-[1250px]:mt-0 gap-16 max-[850px]:block">
+        <div className="w-[340px] max-[850px]:w-full mx-auto">
+          <div className="max-[1250px]:hidden relative block w-full border aspect-[0.66] rounded-[5px] transition group-hover:-translate-y-2 shadow-[1px_1px_5px_#333]">
             <NextImage
               src={book?.cover.url || ""}
               alt={book?.name || ""}
@@ -70,7 +80,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
 
           <BtnWithIcon
-            content="Mua Sách Giấy"
+            content="Mua Sách"
             customClasses="!w-full !block !mt-4 !text-lg"
             isFrontpage
             icon={FaOpencart}
@@ -175,61 +185,24 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             <BookRating bookId={book?._id || ""} />
 
-            <div className="mt-4">
+            <div className="mt-4 max-[850px]:hidden">
               <CategoryPageSidebar />
             </div>
           </div>
         </div>
 
         <div className="relative z-[1] flex-1">
-          <h1 className="font-bold text-3xl text-white">{book?.name}</h1>
-          <div className="flex items-center gap-8 mt-4 text-white">
-            <h2>
-              Tác giả :{" "}
-              <Link
-                href={`${path.author}${slugify(book?.realAuthor || "", {
-                  lower: true,
-                })}`}
-                className="font-semibold hover:underline"
-              >
-                {book?.realAuthor}
-              </Link>
-            </h2>
-            <div className="flex items-center gap-2">
-              Đánh giá : <StarRating defaultRating={book?.ratings} readonly />
-              <span className="font-bold">
-                ({book?.ratings} / {book?.numOfRatings} đánh giá)
-              </span>
-            </div>
+          <div className="max-[1250px]:hidden">
+            <BookGeneralInfo book={book} />
           </div>
 
-          <div className="flex items-center gap-[38px] mt-4 text-white">
-            <p>
-              Ngày đăng :{" "}
-              <span className="font-semibold">
-                {moment(book?.createdAt).format("DD/MM/YYYY")}
-              </span>
-            </p>{" "}
-            <p>
-              Lượt xem : <span className="font-semibold">{book?.views}</span>
-            </p>
-          </div>
-
-          <div className="mt-6 text-white">
-            <BookSocialShare
-              slug={book?.slug || ""}
-              title={book?.name || ""}
-              quote={book?.name || ""}
-            />
-          </div>
-
-          <div className="prose text-black_text mt-16 mb-6">
+          <div className="prose text-black_text mt-16 max-[1250px]:mt-4 mb-6">
             {parse(book?.content || "")}
           </div>
 
-          <div className="flex items-center gap-4 pb-6 border-b">
+          <div className="flex items-center gap-4 pb-6 border-b flex-wrap">
             <span className="font-bold">Thẻ liên quan:</span>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center flex-wrap gap-4">
               {book?.tags.map((tag) => (
                 <Link
                   className="text-gray-500 text-sm rounded border shadow px-2 pt-[6px] pb-2 leading-none hover:bg-primary font-bold hover:text-white transition duration-500"
@@ -250,9 +223,14 @@ const Page: NextPage<Props> = async ({ params }) => {
             />
           </div>
 
-          <div>
+          <div className="max-[850px]:pb-10 max-[850px]:border-b">
             <h3 className="h3-heading">Cảm nhận của bạn</h3>
             <Comments book={book} />
+          </div>
+
+          <div className="max-[850px]:block hidden">
+            <h3 className="h3-heading">Gợi ý cho bạn</h3>
+            <CategoryPageSidebar />
           </div>
         </div>
       </div>
