@@ -73,8 +73,8 @@ const SearchResultsPage: FC<Props> = (props): JSX.Element => {
       </Breadcrumbs>
 
       <div className="container">
-        <div className="flex gap-12">
-          <div className="w-[70%]">
+        <div className="flex gap-12 max-[1100px]:block">
+          <div className="w-[70%] max-[1100px]:w-full max-[1100px]:pb-8 max-[1100px]:border-b">
             <h3 className="h3-heading">Kết quả tìm kiếm cho “{query}”</h3>
             <p className="leading-8">
               Đã tìm thấy <strong>{totalResults}</strong> kết quả phù hợp.
@@ -95,7 +95,7 @@ const SearchResultsPage: FC<Props> = (props): JSX.Element => {
                 <BtnWithIcon
                   content="Tìm kiếm"
                   type="submit"
-                  customClasses="!text-xl max-[500px]:!text-base !w-[120px] !h-[60px] max-[500px]:!h-[40px] before:!rounded-r-[22px] !rounded-r-[22px]"
+                  customClasses="!text-xl max-[500px]:!text-base !w-[120px] !h-[60px] max-[500px]:!h-[50px] before:!rounded-r-[22px] !rounded-r-[22px]"
                   isFrontpage
                 />
               </form>
@@ -112,7 +112,8 @@ const SearchResultsPage: FC<Props> = (props): JSX.Element => {
             </div>
           </div>
 
-          <div className="flex-1 mt-6">
+          <div className="flex-1 max-[1100px]:mt-8 max-[1100px]:w-1/2 max-[1100px]:mx-auto max-[700px]:w-full">
+            <h3 className="h3-heading">Gợi ý cho bạn</h3>
             <CategoryPageSidebar />
           </div>
         </div>

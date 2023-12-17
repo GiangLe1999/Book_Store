@@ -25,7 +25,7 @@ const BooksList: FC<Props> = ({
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-4 gap-8">
+          <div className="grid grid-cols-4 gap-8 max-[700px]:grid-cols-2">
             {[...Array(8).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.66]" key={item} />
             ))}
@@ -34,7 +34,7 @@ const BooksList: FC<Props> = ({
           <>
             {books && books?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-4 gap-8">
+                <div className="grid grid-cols-4 gap-8 max-[700px]:grid-cols-2">
                   {books?.map((book) => (
                     <BookCard key={book._id.toString()} book={book} />
                   ))}

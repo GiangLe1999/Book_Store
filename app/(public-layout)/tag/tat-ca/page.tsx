@@ -42,8 +42,8 @@ const AllTagsPage: NextPage<Props> = () => {
       </Breadcrumbs>
 
       <div className="container">
-        <div className="flex gap-12">
-          <div className="w-[70%]">
+        <div className="flex gap-12 max-[1100px]:block">
+          <div className="w-[70%] max-[1100px]:w-full max-[1100px]:pb-8 max-[1100px]:border-b">
             <div>
               <>
                 {isFetching ? (
@@ -100,7 +100,8 @@ const AllTagsPage: NextPage<Props> = () => {
             </div>
           </div>
 
-          <div className="flex-1 mt-6">
+          <div className="flex-1 max-[1100px]:mt-8 max-[1100px]:w-1/2 max-[1100px]:mx-auto max-[700px]:w-full">
+            <h3 className="h3-heading">Gợi ý cho bạn</h3>
             <CategoryPageSidebar />
           </div>
         </div>
