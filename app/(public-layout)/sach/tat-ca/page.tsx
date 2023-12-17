@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import BooksList from "@/components/books-list";
@@ -10,11 +11,9 @@ import { ISelectOption } from "@/dtos/common.dto";
 import { BookEntity } from "@/entities/book.entity";
 import { getBooksByFilter } from "@/service/books.service";
 import { getAllMainCategories } from "@/service/main-categories.service";
-import {
-  getAllSubCategories,
-  getSameTypeSubCategories,
-} from "@/service/sub-categories.service";
+import { getSameTypeSubCategories } from "@/service/sub-categories.service";
 import { NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
@@ -103,6 +102,13 @@ const AllBooksPage: NextPage<Props> = () => {
 
   return (
     <>
+      <Head>
+        <title>Tất cả danh mục</title>
+        <meta
+          name="description"
+          content="Tất cả sách trong thư viện sách miễn phí về các thể loại sách kinh tế, chính trị, xã hội và triết học, đang trong quá trình cập nhật. Các bạn quan tâm tới các thể loại sách của thư viện có thể mượn đọc hoặc download bản miễn phí."
+        />
+      </Head>
       <Breadcrumbs>
         <li>
           <Link
@@ -115,8 +121,8 @@ const AllBooksPage: NextPage<Props> = () => {
       </Breadcrumbs>
 
       <div className="container">
-        <div className="flex gap-12">
-          <div className="w-[70%]">
+        <div className="flex gap-12 max-[1100px]:block">
+          <div className="w-[70%] max-[1100px]:w-full max-[1100px]:pb-8 max-[1100px]:border-b">
             <div className="text-center">
               <h1 className="h3-heading">Tất cả sách</h1>
               <p className="text-lg">
@@ -125,7 +131,7 @@ const AllBooksPage: NextPage<Props> = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-x-4 mt-8 max-[700px]:grid-cols-1">
               <FormOptimizedSelect
                 id="mainCategory"
                 label="Danh mục lớn"
@@ -170,7 +176,8 @@ const AllBooksPage: NextPage<Props> = () => {
             />
           </div>
 
-          <div className="flex-1 mt-6">
+          <div className="flex-1 max-[1100px]:mt-8 max-[1100px]:w-1/2 max-[1100px]:mx-auto max-[700px]:w-full">
+            <h3 className="h3-heading">Gợi ý cho bạn</h3>
             <CategoryPageSidebar />
           </div>
         </div>

@@ -17,6 +17,23 @@ import BookRating from "@/components/book-rating";
 import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
 import BookGeneralInfo from "@/components/book-page/book-general-info";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const book = await getBookBySlug(params.slug);
+
+    return {
+      title: book?.name,
+      description: book?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

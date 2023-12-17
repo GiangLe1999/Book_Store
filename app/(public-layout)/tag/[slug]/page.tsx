@@ -12,6 +12,7 @@ import { getSameTagBooks } from "@/service/books.service";
 import BooksList from "@/components/books-list";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Head from "next/head";
 
 interface Props {
   params: { slug: string };
@@ -44,6 +45,9 @@ const TagPage: NextPage<Props> = ({ params }) => {
 
   return (
     <>
+      <Head>
+        <title>Thẻ {tagName}</title>
+      </Head>
       <Breadcrumbs>
         <li>
           <Link href={path.allTags} className="hover:underline">

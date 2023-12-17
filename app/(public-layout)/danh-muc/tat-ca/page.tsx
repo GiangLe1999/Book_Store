@@ -5,7 +5,8 @@ import CategoryPageSidebar from "@/components/category-page/category-page-sideba
 import { path } from "@/constants";
 import { MainCategoryEntity } from "@/entities/main-category.entity";
 import { getAllMainCategoriesWithSubCategories } from "@/service/main-categories.service";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -35,6 +36,13 @@ const AllCategoriesPage: NextPage<Props> = () => {
   }, []);
   return (
     <>
+      <Head>
+        <title>Tất cả danh mục</title>
+        <meta
+          name="description"
+          content="Tất cả danh mục trong thư viện sách miễn phí về các thể loại sách kinh tế, chính trị, xã hội và triết học, đang trong quá trình cập nhật. Các bạn quan tâm tới các thể loại sách của thư viện có thể mượn đọc hoặc download bản miễn phí."
+        />
+      </Head>
       <Breadcrumbs>
         <li>
           <Link

@@ -5,6 +5,7 @@ import CategoryPageSidebar from "@/components/category-page/category-page-sideba
 import { path } from "@/constants";
 import { getAllTags } from "@/service/tags.service";
 import { NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -30,6 +31,13 @@ const AllTagsPage: NextPage<Props> = () => {
   }, []);
   return (
     <>
+      <Head>
+        <title>Tất cả thẻ</title>
+        <meta
+          name="description"
+          content="Tất cả thẻ phân loại trong thư viện sách miễn phí về các thể loại sách kinh tế, chính trị, xã hội và triết học, đang trong quá trình cập nhật. Các bạn quan tâm tới các thể loại sách của thư viện có thể mượn đọc hoặc download bản miễn phí."
+        />
+      </Head>
       <Breadcrumbs>
         <li>
           <Link
@@ -40,7 +48,6 @@ const AllTagsPage: NextPage<Props> = () => {
           </Link>
         </li>
       </Breadcrumbs>
-
       <div className="container">
         <div className="flex gap-12 max-[1100px]:block">
           <div className="w-[70%] max-[1100px]:w-full max-[1100px]:pb-8 max-[1100px]:border-b">

@@ -36,3 +36,6 @@ export const path = {
 export const homeBannerUrl = "/assets/images/home/kho-sach-247-home-banner.png";
 
 export const domain = "khosach247.com";
+export const websiteName = "Kho Sách 247";
+export const websiteDescription =
+  "Kho Sách 247 là kho sách online miễn phí được xây dựng nhằm chia sẻ sách ebook, sách bản PDF miễn phí cho những ai khó khăn, chưa có điều kiện mua sách. Đủ thể loại sách cho học sinh, người đi làm và người lớn tuổi.";

@@ -2,13 +2,29 @@ import AdminBooks from "@/components/administrator-page/admin-books";
 import BtnWithIcon from "@/components/btn-with-icon";
 import CategoryPageSidebar from "@/components/category-page/category-page-sidebar";
 import NextImage from "@/components/next-image";
-import UserAvatar from "@/components/user-avatar";
 import { domain } from "@/constants";
 import { getUserProfileBySlug } from "@/service/user.service";
 import { NextPage } from "next";
 import { FaUserCog, FaUserEdit } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const user = await getUserProfileBySlug(params.slug);
+
+    return {
+      title: user?.name,
+      description: user?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 interface Props {
   params: { slug: string };

@@ -12,6 +12,7 @@ import { getSamePublisherBooks } from "@/service/books.service";
 import BooksList from "@/components/books-list";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Head from "next/head";
 
 interface Props {
   params: { slug: string };
@@ -42,6 +43,9 @@ const PulisherPage: NextPage<Props> = ({ params }) => {
 
   return (
     <>
+      <Head>
+        <title>Nhà xuất bản {books?.[0]?.publisher}</title>
+      </Head>
       <Breadcrumbs>
         <li>
           <Link href={path.allPublishers} className="hover:underline">

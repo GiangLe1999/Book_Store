@@ -6,6 +6,7 @@ import CategoryPageSidebar from "@/components/category-page/category-page-sideba
 import { path } from "@/constants";
 import { BookEntity } from "@/entities/book.entity";
 import { getSearchResults } from "@/service/books.service";
+import Head from "next/head";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -64,6 +65,9 @@ const SearchResultsPage: FC<Props> = (props): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>Kết quả tìm kiếm cho {query}</title>
+      </Head>
       <Breadcrumbs>
         <li>
           <Link href="" className="hover:underline text-primary font-semibold">
@@ -71,7 +75,6 @@ const SearchResultsPage: FC<Props> = (props): JSX.Element => {
           </Link>
         </li>
       </Breadcrumbs>
-
       <div className="container">
         <div className="flex gap-12 max-[1100px]:block">
           <div className="w-[70%] max-[1100px]:w-full max-[1100px]:pb-8 max-[1100px]:border-b">

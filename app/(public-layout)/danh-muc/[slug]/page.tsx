@@ -9,6 +9,23 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const data = await getMainCategoryBySlug(params.slug);
+
+    return {
+      title: data?.mainCategory.name,
+      description: data?.mainCategory.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }
