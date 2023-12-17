@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section>
+      <section className="max-[830px]:mt-[130px]">
         <div className="grid grid-cols-2 container max-[830px]:grid-cols-1 gap-x-4 gap-y-14">
           <div className="flex flex-col -mt-[30px] justify-center">
             <h1 className="font-garamond text-[50px] max-[1000px]:text-[40px] mb-4 text-dark_blue leading-tight tracking-tight">
