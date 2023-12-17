@@ -16,7 +16,7 @@ export async function GET(req: Request) {
     await dbConnect();
 
     let allBooks = await Book.find()
-      .select("name slug cover createdAt publisher")
+      .select("name slug cover createdAt publisher views ratings")
       .sort({ createdAt: -1 });
 
     const booksOfPublisher = allBooks.filter((book) => {

@@ -16,7 +16,7 @@ export async function GET(req: Request) {
     await dbConnect();
 
     let allBooks = await Book.find()
-      .select("name slug cover createdAt tags")
+      .select("name slug cover createdAt tags views ratings")
       .sort({ createdAt: -1 });
 
     const savedAllBooks = JSON.parse(JSON.stringify(allBooks));

@@ -57,7 +57,7 @@ const AllTagsPage: NextPage<Props> = () => {
                   </>
                 ) : (
                   <>
-                    <h3 className="h3-heading">Tất cả thẻ ({tags?.length})</h3>
+                    <h1 className="h3-heading">Tất cả thẻ ({tags?.length})</h1>
                     <p className="leading-8">
                       Tham khảo hàng ngàn tựa sách được chọn lọc và sắp xếp theo
                       các thẻ liên quan tại Kho Sách 247.
@@ -81,7 +81,7 @@ const AllTagsPage: NextPage<Props> = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center flex-wrap gap-x-4 gap-y-6">
+                    <div className="flex items-center flex-wrap gap-x-4 gap-y-6 mt-6">
                       {tags?.map((tag) => (
                         <div key={tag} className="">
                           <Link

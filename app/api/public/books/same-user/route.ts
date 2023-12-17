@@ -21,7 +21,7 @@ export async function GET(req: Request) {
     const books = await Book.find({
       author: userId,
     })
-      .select("name slug cover createdAt")
+      .select("name slug cover createdAt views ratings")
       .skip(skip)
       .limit(limit)
       .sort({ createdAt: -1 });

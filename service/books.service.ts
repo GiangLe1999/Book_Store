@@ -219,3 +219,25 @@ export const getNewestBooks = async () => {
     return;
   }
 };
+
+export const getBooksByFilter = async (
+  mainCategoryId: string,
+  subCategoryId: string,
+  sortBy: string,
+  page: number = 1,
+  limit: number = 8
+) => {
+  try {
+    const { data }: { data: GetAllBooksOutput } = await axiosInstance(
+      `/api/public/books/filter`,
+      {
+        params: { mainCategoryId, subCategoryId, sortBy, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

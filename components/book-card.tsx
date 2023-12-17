@@ -33,6 +33,12 @@ const BookCard: FC<Props> = ({ book }): JSX.Element => {
         </h4>
 
         <p className="text-sm capitalize text-[#a7a9ac] mt-2">
+          Lượt xem: {book.views}
+        </p>
+        <p className="text-sm capitalize text-[#a7a9ac] mt-2">
+          Đánh giá: {book.ratings}
+        </p>
+        <p className="text-sm capitalize text-[#a7a9ac] mt-2">
           {moment(book.createdAt).format("dddd - DD/MM/YYYY")}
         </p>
       </Link>

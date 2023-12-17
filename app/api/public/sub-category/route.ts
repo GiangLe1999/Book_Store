@@ -27,7 +27,7 @@ export async function GET(req: Request) {
         {
           path: "books",
           model: Book,
-          select: "name slug cover createdAt",
+          select: "name slug cover createdAt views ratings",
           options: { sort: { createdAt: -1 }, limit: 4 },
         },
       ]);

@@ -10,7 +10,7 @@ export async function GET(req: Request) {
     const books = await Book.find()
       .select("name slug cover ratings views createdAt")
       .limit(5)
-      .sort({ ratings: -1 });
+      .sort({ views: -1 });
 
     return NextResponse.json({ ok: true, books });
   } catch (error: any) {

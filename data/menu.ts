@@ -202,3 +202,10 @@ export const homeMainChoices = [
     slug: "thieu-nhi",
   },
 ];
+
+export const sortByArray = [
+  { label: "Lượt xem nhiều", value: "view" },
+  { label: "Điểm đánh giá", value: "ratings" },
+  { label: "Từ mới đến cũ", value: "newest" },
+  { label: "Từ cũ đến mới", value: "oldest" },
+];
