@@ -233,15 +233,15 @@ export const footerCol31 = [
 ];
 
 export const footerCol32 = [
+  {
+    title: "Về chúng tôi",
+    link: path.introduce,
+  },
   { title: "Bản Quyền Nội Dung", link: path.copyrights },
   { title: "Chính Sách Bảo Mật", link: path.privacy },
   {
     title: "Quy Định Sử Dụng",
     link: path.procedure,
-  },
-  {
-    title: "Chính Sách Bảo Mật",
-    link: path.privacy,
   },
 ];
 
@@ -249,7 +249,7 @@ export const footerCol4 = [
   { title: "Hotline: ", content: "0962334807", link: "tel:0962334807" },
   {
     title: "Email: ",
-    content: "legiangbmt09@gmail.com",
-    link: "legiangbmt09@gmail.com",
+    content: "legiangbmt010@gmail.com",
+    link: "legiangbmt010@gmail.com",
   },
 ];

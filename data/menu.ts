@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { path } from "@/constants";
+import { path, socialLinks } from "@/constants";
 import { IconType } from "react-icons";
 import {
   FaFacebookF,
@@ -175,11 +175,11 @@ export const mainHeaderItems = [
 ];
 
 export const socialItems = [
-  { icon: FaFacebookF, link: "https://www.facebook.com/giang.lethanh.5015/" },
-  { icon: FaXTwitter, link: "https://www.facebook.com/giang.lethanh.5015/" },
-  { icon: FaLinkedinIn, link: "https://www.facebook.com/giang.lethanh.5015/" },
-  { icon: FaPinterestP, link: "https://www.facebook.com/giang.lethanh.5015/" },
-  { icon: FaTumblr, link: "https://www.facebook.com/giang.lethanh.5015/" },
+  { icon: FaFacebookF, link: socialLinks.fbLink },
+  { icon: FaXTwitter, link: socialLinks.twLink },
+  { icon: FaLinkedinIn, link: socialLinks.twLink },
+  { icon: FaPinterestP, link: socialLinks.pinLink },
+  { icon: FaTumblr, link: socialLinks.tumLink },
 ];
 
 export const homeMainChoices = [
