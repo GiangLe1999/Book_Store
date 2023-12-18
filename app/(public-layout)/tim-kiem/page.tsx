@@ -12,7 +12,7 @@ export const generateMetadata = async ({
     const query = searchParams["tu-khoa"];
 
     return {
-      title: `Kết quả tìm kiếm cho ${params}`,
+      title: `Kết quả tìm kiếm cho ${query}`,
       description: `Kết quả tìm kiếm cho những sách tại website Kho Sách 247 có tiêu đề khớp với từ khóa ${query}`,
     };
   } catch (error) {
